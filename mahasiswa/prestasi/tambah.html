@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Prestasi - Mahasiswa | SIMAWA</title>
+    
+    <link rel="icon" type="image/png" href="/image/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'persian-blue': {
+                            '50': '#e9f4ff', '100': '#d7ecff', '200': '#b7d9ff', '300': '#8bbfff',
+                            '400': '#5e95ff', '500': '#396dff', '600': '#1740ff', '700': '#1f42f6',
+                            '800': '#0e2fc5', '900': '#15309a', '950': '#0d1a59',
+                        },
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-inter">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="sidebar w-64 bg-gradient-to-b from-emerald-600 to-emerald-800 text-white fixed h-full z-40">
+            <div class="p-6 border-b border-white/10">
+                <div class="flex items-center gap-3">
+                    <img src="/image/logo.png" alt="Logo" class="h-10 object-contain bg-white rounded-lg p-1">
+                    <div>
+                        <h1 class="font-bold text-lg leading-tight">SIMAWA</h1>
+                        <p class="text-xs text-white/70">Mahasiswa</p>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="p-4">
+                <p class="text-xs text-white/50 uppercase tracking-wider mb-3 px-3">Menu Utama</p>
+                <ul class="space-y-1">
+                    <li><a href="/mahasiswa/dashboard/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="grid" class="text-xl"></ion-icon>Dashboard</a></li>
+                    <li><a href="/mahasiswa/prestasi/" class="sidebar-menu-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="trophy" class="text-xl"></ion-icon>Prestasi Saya</a></li>
+                    <li><a href="/mahasiswa/kegiatan/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="calendar" class="text-xl"></ion-icon>Kegiatan</a></li>
+                </ul>
+            </nav>
+            <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
+                <a href="/" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm hover:bg-white/10 transition-colors"><ion-icon name="log-out" class="text-xl"></ion-icon>Keluar</a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex-1 ml-64">
+            <header class="bg-white border-b border-gray-200 sticky top-0 z-30">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div class="flex items-center gap-4">
+                        <a href="/mahasiswa/prestasi/" class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                            <ion-icon name="arrow-back" class="text-xl"></ion-icon>
+                        </a>
+                        <div>
+                            <h2 class="text-xl font-bold text-gray-800">Upload Prestasi Baru</h2>
+                            <p class="text-sm text-gray-500">Ajukan prestasi untuk diverifikasi</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="p-6">
+                <div class="max-w-3xl mx-auto">
+                    <!-- Info Alert -->
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 mb-6 flex items-start gap-3">
+                        <ion-icon name="information-circle" class="text-2xl text-emerald-600 flex-shrink-0 mt-0.5"></ion-icon>
+                        <div>
+                            <p class="font-medium text-emerald-800">Petunjuk Pengisian</p>
+                            <p class="text-sm text-emerald-600 mt-1">Pastikan data yang diisi sesuai dengan bukti prestasi. Tim Kemahasiswaan akan memverifikasi prestasi Anda dalam 3-5 hari kerja.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Form -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                        <form>
+                            <!-- Nama Prestasi -->
+                            <div class="form-group">
+                                <label class="form-label">Nama Prestasi <span class="text-red-500">*</span></label>
+                                <input type="text" class="form-input" placeholder="Contoh: Juara 1 Hackathon Nasional 2025">
+                            </div>
+                            
+                            <!-- Kategori & Tingkat -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="form-group">
+                                    <label class="form-label">Kategori <span class="text-red-500">*</span></label>
+                                    <select class="form-select">
+                                        <option value="">Pilih Kategori</option>
+                                        <option value="akademik">Akademik</option>
+                                        <option value="olahraga">Olahraga</option>
+                                        <option value="seni">Seni & Budaya</option>
+                                        <option value="organisasi">Organisasi</option>
+                                        <option value="lainnya">Lainnya</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Tingkat <span class="text-red-500">*</span></label>
+                                    <select class="form-select">
+                                        <option value="">Pilih Tingkat</option>
+                                        <option value="universitas">Universitas</option>
+                                        <option value="regional">Regional/Provinsi</option>
+                                        <option value="nasional">Nasional</option>
+                                        <option value="internasional">Internasional</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- Peringkat -->
+                            <div class="form-group">
+                                <label class="form-label">Peringkat/Capaian <span class="text-red-500">*</span></label>
+                                <select class="form-select">
+                                    <option value="">Pilih Peringkat</option>
+                                    <option value="juara1">Juara 1 / Gold / Best</option>
+                                    <option value="juara2">Juara 2 / Silver</option>
+                                    <option value="juara3">Juara 3 / Bronze</option>
+                                    <option value="finalis">Finalis</option>
+                                    <option value="peserta">Peserta/Partisipan</option>
+                                    <option value="lainnya">Lainnya</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Penyelenggara -->
+                            <div class="form-group">
+                                <label class="form-label">Penyelenggara <span class="text-red-500">*</span></label>
+                                <input type="text" class="form-input" placeholder="Contoh: Kementerian Pendidikan dan Kebudayaan">
+                            </div>
+                            
+                            <!-- Tanggal & Lokasi -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="form-group">
+                                    <label class="form-label">Tanggal Kegiatan <span class="text-red-500">*</span></label>
+                                    <input type="date" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Lokasi</label>
+                                    <input type="text" class="form-input" placeholder="Contoh: Jakarta">
+                                </div>
+                            </div>
+                            
+                            <!-- Deskripsi -->
+                            <div class="form-group">
+                                <label class="form-label">Deskripsi Prestasi</label>
+                                <textarea class="form-input" rows="4" placeholder="Jelaskan tentang prestasi yang diraih..."></textarea>
+                            </div>
+                            
+                            <!-- Upload Bukti -->
+                            <div class="form-group">
+                                <label class="form-label">Upload Bukti Prestasi <span class="text-red-500">*</span></label>
+                                <div class="file-upload-area" id="dropZone">
+                                    <ion-icon name="cloud-upload-outline" class="text-5xl text-gray-400 mb-3"></ion-icon>
+                                    <p class="text-gray-600 font-medium">Klik atau drag file ke sini</p>
+                                    <p class="text-sm text-gray-400 mt-1">Sertifikat, Piagam, atau bukti lainnya</p>
+                                    <p class="text-xs text-gray-400 mt-1">Format: PDF, JPG, PNG (Max 5MB)</p>
+                                    <input type="file" class="hidden" id="fileInput" accept=".pdf,.jpg,.jpeg,.png">
+                                </div>
+                                
+                                <!-- Uploaded Files -->
+                                <div class="mt-3 space-y-2" id="uploadedFiles">
+                                    <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                        <div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0">
+                                            <ion-icon name="document" class="text-red-600"></ion-icon>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm font-medium text-gray-800 truncate">sertifikat_hackathon.pdf</p>
+                                            <p class="text-xs text-gray-500">1.2 MB</p>
+                                        </div>
+                                        <button type="button" class="p-1 text-gray-400 hover:text-red-500">
+                                            <ion-icon name="close-circle" class="text-xl"></ion-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- URL Pendukung -->
+                            <div class="form-group">
+                                <label class="form-label">URL Pendukung (Opsional)</label>
+                                <input type="url" class="form-input" placeholder="https://example.com/bukti-prestasi">
+                                <p class="text-xs text-gray-500 mt-1">Link berita, website penyelenggara, atau bukti online lainnya</p>
+                            </div>
+                            
+                            <!-- Submit -->
+                            <div class="flex items-center justify-end gap-3 pt-4 border-t border-gray-100 mt-6">
+                                <a href="/mahasiswa/prestasi/" class="btn btn-outline">Batal</a>
+                                <button type="button" class="btn btn-primary" onclick="alert('Prestasi berhasil diajukan! Tim Kemahasiswaan akan memverifikasi dalam 3-5 hari kerja.')">
+                                    <ion-icon name="paper-plane"></ion-icon>
+                                    Ajukan Prestasi
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        
+        dropZone.addEventListener('click', () => fileInput.click());
+        
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+        
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+        
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+        });
+    </script>
+</body>
+</html>

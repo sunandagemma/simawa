@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestasi Saya - Mahasiswa | SIMAWA</title>
+    
+    <link rel="icon" type="image/png" href="/image/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'persian-blue': {
+                            '50': '#e9f4ff', '100': '#d7ecff', '200': '#b7d9ff', '300': '#8bbfff',
+                            '400': '#5e95ff', '500': '#396dff', '600': '#1740ff', '700': '#1f42f6',
+                            '800': '#0e2fc5', '900': '#15309a', '950': '#0d1a59',
+                        },
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-inter">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="sidebar w-64 bg-gradient-to-b from-emerald-600 to-emerald-800 text-white fixed h-full z-40">
+            <div class="p-6 border-b border-white/10">
+                <div class="flex items-center gap-3">
+                    <img src="/image/logo.png" alt="Logo" class="h-10 object-contain bg-white rounded-lg p-1">
+                    <div>
+                        <h1 class="font-bold text-lg leading-tight">SIMAWA</h1>
+                        <p class="text-xs text-white/70">Mahasiswa</p>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="p-4">
+                <p class="text-xs text-white/50 uppercase tracking-wider mb-3 px-3">Menu Utama</p>
+                <ul class="space-y-1">
+                    <li><a href="/mahasiswa/dashboard/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="grid" class="text-xl"></ion-icon>Dashboard</a></li>
+                    <li><a href="/mahasiswa/prestasi/" class="sidebar-menu-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="trophy" class="text-xl"></ion-icon>Prestasi Saya</a></li>
+                    <li><a href="/mahasiswa/kegiatan/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="calendar" class="text-xl"></ion-icon>Kegiatan</a></li>
+                </ul>
+            </nav>
+            <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
+                <a href="/" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm hover:bg-white/10 transition-colors"><ion-icon name="log-out" class="text-xl"></ion-icon>Keluar</a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex-1 ml-64">
+            <header class="bg-white border-b border-gray-200 sticky top-0 z-30">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800">Prestasi Saya</h2>
+                        <p class="text-sm text-gray-500">Riwayat prestasi yang sudah diajukan</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <a href="/mahasiswa/prestasi/tambah.html" class="btn btn-primary">
+                            <ion-icon name="add"></ion-icon>
+                            Upload Prestasi
+                        </a>
+                        <div class="flex items-center gap-3 pl-4 border-l border-gray-200">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
+                                <ion-icon name="person" class="text-emerald-600 text-xl"></ion-icon>
+                            </div>
+                            <div class="hidden sm:block">
+                                <p class="text-sm font-semibold text-gray-800">Ahmad Syaiful Rizki</p>
+                                <p class="text-xs text-gray-500">A11.2021.13547</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="p-6">
+                <!-- Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center">
+                            <ion-icon name="trophy" class="text-2xl text-amber-600"></ion-icon>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-gray-800">8</p>
+                            <p class="text-sm text-gray-500">Total Prestasi</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
+                            <ion-icon name="checkmark-circle" class="text-2xl text-emerald-600"></ion-icon>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-gray-800">7</p>
+                            <p class="text-sm text-gray-500">Terverifikasi</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center">
+                            <ion-icon name="time" class="text-2xl text-amber-600"></ion-icon>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-gray-800">1</p>
+                            <p class="text-sm text-gray-500">Pending</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center">
+                            <ion-icon name="close-circle" class="text-2xl text-red-600"></ion-icon>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-gray-800">0</p>
+                            <p class="text-sm text-gray-500">Ditolak</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Filter -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-6">
+                    <div class="flex flex-wrap items-center gap-4">
+                        <select class="form-select w-auto">
+                            <option value="">Semua Status</option>
+                            <option>Terverifikasi</option>
+                            <option>Pending</option>
+                            <option>Ditolak</option>
+                        </select>
+                        <select class="form-select w-auto">
+                            <option value="">Semua Kategori</option>
+                            <option>Akademik</option>
+                            <option>Olahraga</option>
+                            <option>Seni & Budaya</option>
+                        </select>
+                        <select class="form-select w-auto">
+                            <option value="">Semua Tingkat</option>
+                            <option>Universitas</option>
+                            <option>Regional</option>
+                            <option>Nasional</option>
+                            <option>Internasional</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Prestasi List -->
+                <div class="space-y-4">
+                    <!-- Item 1 - Pending -->
+                    <div class="bg-white rounded-xl shadow-sm border border-amber-200 overflow-hidden">
+                        <div class="flex flex-col lg:flex-row">
+                            <div class="lg:w-48 h-32 lg:h-auto bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
+                                <ion-icon name="trophy" class="text-5xl text-white/80"></ion-icon>
+                            </div>
+                            <div class="flex-1 p-5">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="badge badge-warning">Menunggu Verifikasi</span>
+                                            <span class="badge badge-info">Akademik</span>
+                                            <span class="badge badge-purple">Nasional</span>
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Juara 1 Hackathon Nasional 2025</h3>
+                                        <p class="text-sm text-gray-500 mb-3">Kompetisi pengembangan aplikasi inovatif tingkat nasional yang diselenggarakan oleh Kemendikbud.</p>
+                                        <div class="flex items-center gap-4 text-sm text-gray-500">
+                                            <span class="flex items-center gap-1"><ion-icon name="calendar-outline"></ion-icon> 21 Jan 2025</span>
+                                            <span class="flex items-center gap-1"><ion-icon name="location-outline"></ion-icon> Jakarta</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2 flex-shrink-0">
+                                        <button class="btn btn-sm btn-outline"><ion-icon name="eye-outline"></ion-icon></button>
+                                        <button class="btn btn-sm btn-outline"><ion-icon name="create-outline"></ion-icon></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 - Verified -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="flex flex-col lg:flex-row">
+                            <div class="lg:w-48 h-32 lg:h-auto bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center">
+                                <ion-icon name="ribbon" class="text-5xl text-white/80"></ion-icon>
+                            </div>
+                            <div class="flex-1 p-5">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="badge badge-success">Terverifikasi</span>
+                                            <span class="badge badge-info">Akademik</span>
+                                            <span class="badge" style="background-color: #fce7f3; color: #be185d;">Internasional</span>
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Best Paper - ICETT 2024</h3>
+                                        <p class="text-sm text-gray-500 mb-3">International Conference on Emerging Technology and Trends 2024.</p>
+                                        <div class="flex items-center gap-4 text-sm text-gray-500">
+                                            <span class="flex items-center gap-1"><ion-icon name="calendar-outline"></ion-icon> 15 Des 2024</span>
+                                            <span class="flex items-center gap-1"><ion-icon name="location-outline"></ion-icon> Singapore</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2 flex-shrink-0">
+                                        <button class="btn btn-sm btn-outline"><ion-icon name="eye-outline"></ion-icon></button>
+                                        <button class="btn btn-sm btn-outline"><ion-icon name="download-outline"></ion-icon></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="flex flex-col lg:flex-row">
+                            <div class="lg:w-48 h-32 lg:h-auto bg-gradient-to-br from-persian-blue-400 to-persian-blue-600 flex items-center justify-center">
+                                <ion-icon name="code-slash" class="text-5xl text-white/80"></ion-icon>
+                            </div>
+                            <div class="flex-1 p-5">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="badge badge-success">Terverifikasi</span>
+                                            <span class="badge badge-info">Akademik</span>
+                                            <span class="badge" style="background-color: #dbeafe; color: #1e40af;">Regional</span>
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Juara 2 Competitive Programming Jateng</h3>
+                                        <p class="text-sm text-gray-500 mb-3">Kompetisi pemrograman kompetitif tingkat Jawa Tengah.</p>
+                                        <div class="flex items-center gap-4 text-sm text-gray-500">
+                                            <span class="flex items-center gap-1"><ion-icon name="calendar-outline"></ion-icon> 10 Nov 2024</span>
+                                            <span class="flex items-center gap-1"><ion-icon name="location-outline"></ion-icon> Semarang</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2 flex-shrink-0">
+                                        <button class="btn btn-sm btn-outline"><ion-icon name="eye-outline"></ion-icon></button>
+                                        <button class="btn btn-sm btn-outline"><ion-icon name="download-outline"></ion-icon></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 4 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="flex flex-col lg:flex-row">
+                            <div class="lg:w-48 h-32 lg:h-auto bg-gradient-to-br from-violet-400 to-violet-600 flex items-center justify-center">
+                                <ion-icon name="bulb" class="text-5xl text-white/80"></ion-icon>
+                            </div>
+                            <div class="flex-1 p-5">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="badge badge-success">Terverifikasi</span>
+                                            <span class="badge badge-info">Akademik</span>
+                                            <span class="badge badge-purple">Nasional</span>
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Finalis Program Kreativitas Mahasiswa</h3>
+                                        <p class="text-sm text-gray-500 mb-3">PKM Karsa Cipta - Inovasi Teknologi Pertanian.</p>
+                                        <div class="flex items-center gap-4 text-sm text-gray-500">
+                                            <span class="flex items-center gap-1"><ion-icon name="calendar-outline"></ion-icon> 20 Okt 2024</span>
+                                            <span class="flex items-center gap-1"><ion-icon name="location-outline"></ion-icon> Surabaya</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2 flex-shrink-0">
+                                        <button class="btn btn-sm btn-outline"><ion-icon name="eye-outline"></ion-icon></button>
+                                        <button class="btn btn-sm btn-outline"><ion-icon name="download-outline"></ion-icon></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

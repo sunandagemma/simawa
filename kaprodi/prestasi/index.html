@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestasi Prodi - Kaprodi | SIMAWA</title>
+    <link rel="icon" type="image/png" href="/image/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { 'inter': ['Inter', 'sans-serif'] } } } }
+    </script>
+</head>
+<body class="bg-gray-50 font-inter">
+    <div class="flex min-h-screen">
+        <aside class="sidebar w-64 bg-gradient-to-b from-amber-600 to-amber-800 text-white fixed h-full z-40">
+            <div class="p-6 border-b border-white/10">
+                <div class="flex items-center gap-3">
+                    <img src="/image/logo.png" alt="Logo" class="h-10 bg-white rounded-lg p-1">
+                    <div><h1 class="font-bold text-lg">SIMAWA</h1><p class="text-xs text-white/70">Kaprodi</p></div>
+                </div>
+            </div>
+            <nav class="p-4">
+                <ul class="space-y-1">
+                    <li><a href="/kaprodi/dashboard/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="grid" class="text-xl"></ion-icon>Dashboard</a></li>
+                    <li><a href="/kaprodi/prestasi/" class="sidebar-menu-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="trophy" class="text-xl"></ion-icon>Prestasi Prodi</a></li>
+                </ul>
+            </nav>
+            <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
+                <a href="/" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm hover:bg-white/10"><ion-icon name="log-out" class="text-xl"></ion-icon>Keluar</a>
+            </div>
+        </aside>
+        
+        <main class="flex-1 ml-64">
+            <header class="bg-white border-b border-gray-200 sticky top-0 z-30">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div><h2 class="text-xl font-bold text-gray-800">Prestasi Prodi</h2><p class="text-sm text-gray-500">Teknik Informatika - Fakultas Teknik</p></div>
+                    <button class="btn btn-outline"><ion-icon name="download-outline"></ion-icon>Export</button>
+                </div>
+            </header>
+            
+            <div class="p-6">
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 flex items-center gap-3">
+                    <ion-icon name="information-circle" class="text-2xl text-amber-600"></ion-icon>
+                    <p class="text-sm text-amber-800">Data yang ditampilkan hanya prestasi mahasiswa <strong>Program Studi Teknik Informatika</strong>.</p>
+                </div>
+                
+                <div class="flex flex-wrap items-center gap-4 mb-6">
+                    <div class="relative flex-1 min-w-64">
+                        <ion-icon name="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></ion-icon>
+                        <input type="text" placeholder="Cari prestasi..." class="form-input pl-10 w-full bg-white">
+                    </div>
+                    <select class="form-select w-auto bg-white"><option value="">Semua Kategori</option><option>Akademik</option><option>Olahraga</option><option>Teknologi</option></select>
+                    <select class="form-select w-auto bg-white"><option value="">Semua Tingkat</option><option>Internasional</option><option>Nasional</option><option>Regional</option></select>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+                    <table class="data-table">
+                        <thead><tr><th>Mahasiswa</th><th>Prestasi</th><th>Kategori</th><th>Tingkat</th><th>Tanggal</th></tr></thead>
+                        <tbody>
+                            <tr><td><div><p class="font-medium">Ahmad Syaiful Rizki</p><p class="text-xs text-gray-500">A11.2021.13547</p></div></td><td>Juara 1 Hackathon Nasional 2025</td><td><span class="badge badge-warning">Teknologi</span></td><td><span class="badge badge-purple">Nasional</span></td><td>21 Jan 2025</td></tr>
+                            <tr><td><div><p class="font-medium">Budi Prasetyo</p><p class="text-xs text-gray-500">A11.2021.13550</p></div></td><td>Juara 2 Hackathon Jateng 2024</td><td><span class="badge badge-warning">Teknologi</span></td><td><span class="badge badge-info">Regional</span></td><td>5 Des 2024</td></tr>
+                            <tr><td><div><p class="font-medium">Ahmad Syaiful Rizki</p><p class="text-xs text-gray-500">A11.2021.13547</p></div></td><td>Best Paper - Seminar Nasional TI</td><td><span class="badge badge-info">Akademik</span></td><td><span class="badge badge-purple">Nasional</span></td><td>15 Nov 2024</td></tr>
+                            <tr><td><div><p class="font-medium">Citra Dewi</p><p class="text-xs text-gray-500">A11.2021.13560</p></div></td><td>Juara 3 Olimpiade Pemrograman</td><td><span class="badge badge-warning">Teknologi</span></td><td><span class="badge badge-purple">Nasional</span></td><td>10 Okt 2024</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="p-4 border-t border-gray-100 flex items-center justify-between">
+                        <p class="text-sm text-gray-500">Menampilkan 1-4 dari 42 prestasi</p>
+                        <div class="flex items-center gap-2"><button class="btn btn-sm btn-outline" disabled>Sebelumnya</button><button class="btn btn-sm btn-primary">1</button><button class="btn btn-sm btn-outline">2</button><button class="btn btn-sm btn-outline">Selanjutnya</button></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

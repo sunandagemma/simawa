@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Superadmin | SIMAWA</title>
+
+    <link rel="icon" type="image/png" href="/image/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'simawa': {
+                            '50': '#BDE8F5', '100': '#9DD9EF', '200': '#7DCAE9',
+                            '300': '#4988C4', '400': '#3A7AB8', '500': '#1C4D8D',
+                            '600': '#184480', '700': '#143B73', '800': '#0F2854', '900': '#0A1F45',
+                        },
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 font-inter">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="sidebar w-64 bg-gradient-to-b from-[#1C4D8D] to-[#0F2854] text-white fixed h-full z-40">
+            <div class="p-6 border-b border-white/10">
+                <div class="flex items-center gap-3 w-full">
+                    <img src="/image/logo.png" alt="Logo" class="h-16 object-contain bg-white/10 rounded-lg p-2 w-full">
+                </div>
+            </div>
+
+            <nav class="p-4">
+                <ul class="space-y-1">
+                    <li><a href="/superadmin/dashboard/"
+                            class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                name="grid" class="text-xl"></ion-icon>Dashboard</a></li>
+                </ul>
+
+                <p class="text-xs text-white/50 uppercase tracking-wider mb-3 px-3 mt-6">Menu</p>
+                <ul class="space-y-1">
+                    <li class="submenu-parent open">
+                        <button onclick="this.parentElement.classList.toggle('open')"
+                            class="sidebar-menu-item flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm">
+                            <span class="flex items-center gap-3"><ion-icon name="cloud-done-outline"
+                                    class="text-xl"></ion-icon>SIMKATMAWA</span>
+                            <ion-icon name="chevron-down-outline"
+                                class="text-sm submenu-arrow transition-transform"></ion-icon>
+                        </button>
+                        <ul class="submenu pl-8 space-y-1 mt-1">
+                            <li><a href="/superadmin/kategori-prestasi/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="medal-outline" class="text-lg"></ion-icon>Kategori Prestasi</a></li>
+                            <li><a href="/superadmin/formulir-prestasi/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="reader-outline" class="text-lg"></ion-icon>Formulir Prestasi</a></li>
+                            <li><a href="/superadmin/daftar-prestasi/"
+                                    class="sidebar-menu-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon
+                                        name="school-outline" class="text-lg"></ion-icon>Daftar Prestasi</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu-parent">
+                        <button onclick="this.parentElement.classList.toggle('open')"
+                            class="sidebar-menu-item flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm">
+                            <span class="flex items-center gap-3"><ion-icon name="podium-outline"
+                                    class="text-xl"></ion-icon>Internal Universitas</span>
+                            <ion-icon name="chevron-down-outline"
+                                class="text-sm submenu-arrow transition-transform"></ion-icon>
+                        </button>
+                        <ul class="submenu pl-8 space-y-1 mt-1">
+                            <li><a href="/superadmin/jenis-sertifikat/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="library-outline" class="text-lg"></ion-icon>Jenis Sertifikat</a></li>
+                            <li><a href="/superadmin/daftar-mahasiswa/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="person-circle-outline" class="text-lg"></ion-icon>Daftar Mahasiswa</a>
+                            </li>
+                            <li><a href="/superadmin/kegiatan/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="pricetags-outline" class="text-lg"></ion-icon>Kegiatan</a></li>
+                        </ul>
+                    </li>
+
+                    <p class="text-xs text-white/50 uppercase tracking-wider mb-3 px-3 mt-6">User</p>
+                    <li><a href="/superadmin/kegiatan-mahasiswa/"
+                            class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon
+                                name="people-outline" class="text-xl"></ion-icon>Kelola Users</a></li>
+                    <li><a href="/superadmin/log-aktivitas/"
+                            class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon
+                                name="shield-checkmark-outline" class="text-xl"></ion-icon>Log Aktivitas</a></li>
+                </ul>
+            </nav>
+            <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
+                <a href="/"
+                    class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm hover:bg-white/10 transition-colors"><ion-icon
+                        name="log-out" class="text-xl"></ion-icon>Keluar</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 ml-64">
+            <header class="bg-white border-b border-gray-200 sticky top-0 z-30">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800">Daftar Prestasi</h2>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-3 pl-4 border-l border-gray-200">
+                            <div class="w-10 h-10 rounded-full bg-[#BDE8F5] flex items-center justify-center">
+                                <ion-icon name="shield-checkmark" class="text-[#0F2854] text-xl"></ion-icon>
+                            </div>
+                            <div class="hidden sm:block">
+                                <p class="text-sm font-semibold text-gray-800">Superadmin</p>
+                                <p class="text-xs text-gray-500">admin@unwahas.ac.id</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="p-6">
+                <!-- Header Section -->
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Data Prestasi Mahasiswa</h3>
+                        <p class="text-sm text-gray-500 mt-1">Kelola dan pantau prestasi mahasiswa</p>
+                    </div>
+                    <button onclick="exportData()"
+                        class="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 transition-all shadow-lg shadow-green-500/25 text-sm font-medium">
+                        <ion-icon name="download-outline" class="text-lg"></ion-icon>
+                        Export Data
+                    </button>
+                </div>
+
+                <!-- Search & Filter Section -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                        <!-- Search -->
+                        <div class="lg:col-span-2">
+                            <div class="relative">
+                                <ion-icon name="search-outline"
+                                    class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></ion-icon>
+                                <input type="text" id="searchInput" onkeyup="filterData()"
+                                    class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-simawa-500/20 focus:border-simawa-500 transition-all text-sm"
+                                    placeholder="Cari nama atau NIM...">
+                            </div>
+                        </div>
+
+                        <!-- Filter Fakultas -->
+                        <div>
+                            <select id="filterFakultas" onchange="filterData()"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-simawa-500/20 focus:border-simawa-500 transition-all text-sm">
+                                <option value="">Semua Fakultas</option>
+                                <option value="Fakultas Teknik">Fakultas Teknik</option>
+                                <option value="Fakultas Ekonomi">Fakultas Ekonomi</option>
+                                <option value="Fakultas Hukum">Fakultas Hukum</option>
+                                <option value="Fakultas Agama Islam">Fakultas Agama Islam</option>
+                            </select>
+                        </div>
+
+                        <!-- Filter Prodi -->
+                        <div>
+                            <select id="filterProdi" onchange="filterData()"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-simawa-500/20 focus:border-simawa-500 transition-all text-sm">
+                                <option value="">Semua Prodi</option>
+                                <option value="Teknik Informatika">Teknik Informatika</option>
+                                <option value="Sistem Informasi">Sistem Informasi</option>
+                                <option value="Teknik Mesin">Teknik Mesin</option>
+                                <option value="Manajemen">Manajemen</option>
+                                <option value="Akuntansi">Akuntansi</option>
+                                <option value="Ilmu Hukum">Ilmu Hukum</option>
+                            </select>
+                        </div>
+
+                        <!-- Filter Kategori -->
+                        <div>
+                            <select id="filterKategori" onchange="filterData()"
+                                class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-simawa-500/20 focus:border-simawa-500 transition-all text-sm">
+                                <option value="">Semua Kategori</option>
+                                <option value="Prestasi Mahasiswa">Prestasi Mahasiswa</option>
+                                <option value="Penyelenggara Kegiatan">Penyelenggara Kegiatan</option>
+                                <option value="Rekognisi Non Lomba">Rekognisi Non Lomba</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Active Filters -->
+                    <div id="activeFilters" class="hidden flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-100">
+                        <!-- Active filter tags will be rendered here -->
+                    </div>
+                </div>
+
+                <!-- Table Card -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
+                                <tr>
+                                    <th
+                                        class="px-4 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-14">
+                                        No</th>
+                                    <th
+                                        class="px-4 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        Nama Mahasiswa</th>
+                                    <th
+                                        class="px-4 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-32">
+                                        NIM</th>
+                                    <th
+                                        class="px-4 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        Fakultas</th>
+                                    <th
+                                        class="px-4 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        Prodi</th>
+                                    <th
+                                        class="px-4 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        Kategori Prestasi</th>
+                                    <th
+                                        class="px-4 py-4 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider w-32">
+                                        Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody" class="divide-y divide-gray-100">
+                                <!-- Data will be rendered here by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="emptyState" class="hidden py-12 text-center">
+                        <ion-icon name="school-outline" class="text-6xl text-gray-300 mb-4"></ion-icon>
+                        <p class="text-gray-500">Tidak ada data prestasi ditemukan</p>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div id="pagination" class="px-6 py-4 border-t border-gray-100 flex items-center justify-between">
+                        <p class="text-sm text-gray-500">
+                            Menampilkan <span id="showingStart">1</span> - <span id="showingEnd">10</span> dari <span
+                                id="totalData">0</span> data
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <button onclick="prevPage()" id="prevBtn"
+                                class="px-3 py-1.5 border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                                <ion-icon name="chevron-back-outline"></ion-icon>
+                            </button>
+                            <div id="pageNumbers" class="flex items-center gap-1">
+                                <!-- Page numbers will be rendered here -->
+                            </div>
+                            <button onclick="nextPage()" id="nextBtn"
+                                class="px-3 py-1.5 border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detail Modal -->
+            <div id="detailModal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+                <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeDetailModal()"></div>
+                <div class="flex items-start justify-center min-h-screen p-4 pt-10">
+                    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl transform transition-all">
+                        <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">Detail Prestasi</h3>
+                                <p class="text-sm text-gray-500 mt-1">Informasi lengkap prestasi mahasiswa</p>
+                            </div>
+                            <button onclick="closeDetailModal()"
+                                class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                                <ion-icon name="close-outline" class="text-xl text-gray-500"></ion-icon>
+                            </button>
+                        </div>
+                        <div id="detailContent" class="p-6 max-h-[60vh] overflow-y-auto">
+                            <!-- Detail content will be rendered here -->
+                        </div>
+                        <div class="p-6 border-t border-gray-100 flex gap-3">
+                            <button onclick="closeDetailModal()"
+                                class="flex-1 px-4 py-2.5 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-all text-sm font-medium">
+                                Tutup
+                            </button>
+                            <button onclick="downloadCertificate()"
+                                class="flex-1 px-4 py-2.5 bg-gradient-to-r from-simawa-500 to-simawa-700 text-white rounded-lg hover:from-simawa-600 hover:to-simawa-800 transition-all text-sm font-medium">
+                                <ion-icon name="download-outline" class="mr-1"></ion-icon>
+                                Download Sertifikat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delete Confirmation Modal -->
+            <div id="deleteModal" class="fixed inset-0 z-50 hidden">
+                <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeDeleteModal()"></div>
+                <div class="flex items-center justify-center min-h-screen p-4">
+                    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-sm transform transition-all">
+                        <div class="p-6 text-center">
+                            <div
+                                class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <ion-icon name="trash-outline" class="text-3xl text-red-500"></ion-icon>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Hapus Data Prestasi?</h3>
+                            <p class="text-sm text-gray-500 mb-6">Data yang dihapus tidak dapat dikembalikan. Apakah
+                                Anda yakin?</p>
+                            <div class="flex gap-3">
+                                <button onclick="closeDeleteModal()"
+                                    class="flex-1 px-4 py-2.5 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-all text-sm font-medium">
+                                    Batal
+                                </button>
+                                <button onclick="confirmDelete()"
+                                    class="flex-1 px-4 py-2.5 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all text-sm font-medium">
+                                    Hapus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toast Notification -->
+            <div id="toast"
+                class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300">
+                <div class="flex items-center gap-3 px-4 py-3 bg-white rounded-lg shadow-lg border border-gray-100">
+                    <ion-icon id="toastIcon" name="checkmark-circle" class="text-xl text-green-500"></ion-icon>
+                    <span id="toastMessage" class="text-sm text-gray-700">Berhasil!</span>
+                </div>
+            </div>
+
+            <script>
+                // Sample Data
+                let prestasi = [
+                    { id: 1, nama: 'Ahmad Fauzi Rahman', nim: '2021101001', fakultas: 'Fakultas Teknik', prodi: 'Teknik Informatika', kategori: 'Prestasi Mahasiswa', judul: 'Juara 1 Hackathon Nasional', tingkat: 'Nasional', tanggal: '2025-11-15', deskripsi: 'Memenangkan kompetisi hackathon tingkat nasional dengan tema Smart City Solution' },
+                    { id: 2, nama: 'Siti Nurhaliza', nim: '2021102002', fakultas: 'Fakultas Ekonomi', prodi: 'Manajemen', kategori: 'Prestasi Mahasiswa', judul: 'Juara 2 Business Plan Competition', tingkat: 'Provinsi', tanggal: '2025-10-20', deskripsi: 'Meraih juara 2 dalam kompetisi business plan tingkat Jawa Tengah' },
+                    { id: 3, nama: 'Muhammad Rizki', nim: '2020101003', fakultas: 'Fakultas Teknik', prodi: 'Sistem Informasi', kategori: 'Penyelenggara Kegiatan', judul: 'IT Festival 2025', tingkat: 'Universitas', tanggal: '2025-09-10', deskripsi: 'Sebagai ketua panitia dalam penyelenggaraan IT Festival 2025' },
+                    { id: 4, nama: 'Dewi Kartika Sari', nim: '2022103004', fakultas: 'Fakultas Hukum', prodi: 'Ilmu Hukum', kategori: 'Prestasi Mahasiswa', judul: 'Juara 1 Debat Hukum', tingkat: 'Regional', tanggal: '2025-08-25', deskripsi: 'Memenangkan lomba debat hukum tingkat regional Jawa-Bali' },
+                    { id: 5, nama: 'Budi Santoso', nim: '2021101005', fakultas: 'Fakultas Teknik', prodi: 'Teknik Informatika', kategori: 'Rekognisi Non Lomba', judul: 'Publikasi Jurnal Internasional', tingkat: 'Internasional', tanggal: '2025-12-01', deskripsi: 'Berhasil mempublikasikan paper di jurnal internasional terindeks Scopus' },
+                    { id: 6, nama: 'Anisa Rahma', nim: '2022102006', fakultas: 'Fakultas Ekonomi', prodi: 'Akuntansi', kategori: 'Prestasi Mahasiswa', judul: 'Juara 3 Olimpiade Akuntansi', tingkat: 'Nasional', tanggal: '2025-07-15', deskripsi: 'Meraih medali perunggu dalam Olimpiade Akuntansi Nasional' },
+                    { id: 7, nama: 'Fajar Nugroho', nim: '2020101007', fakultas: 'Fakultas Teknik', prodi: 'Teknik Mesin', kategori: 'Penyelenggara Kegiatan', judul: 'Workshop Robotika', tingkat: 'Universitas', tanggal: '2025-06-20', deskripsi: 'Mengadakan workshop robotika untuk mahasiswa se-universitas' },
+                    { id: 8, nama: 'Rina Wulandari', nim: '2021104008', fakultas: 'Fakultas Agama Islam', prodi: 'Pendidikan Agama Islam', kategori: 'Prestasi Mahasiswa', judul: 'Juara 1 MTQ Tingkat Provinsi', tingkat: 'Provinsi', tanggal: '2025-05-10', deskripsi: 'Memenangkan cabang tilawah pada MTQ tingkat Provinsi Jawa Tengah' },
+                    { id: 9, nama: 'Dimas Prasetyo', nim: '2022101009', fakultas: 'Fakultas Teknik', prodi: 'Teknik Informatika', kategori: 'Rekognisi Non Lomba', judul: 'Magang di Google', tingkat: 'Internasional', tanggal: '2025-04-01', deskripsi: 'Diterima sebagai Software Engineering Intern di Google Singapore' },
+                    { id: 10, nama: 'Putri Amelia', nim: '2021102010', fakultas: 'Fakultas Ekonomi', prodi: 'Manajemen', kategori: 'Prestasi Mahasiswa', judul: 'Best Presenter Conference', tingkat: 'Nasional', tanggal: '2025-03-15', deskripsi: 'Meraih penghargaan Best Presenter di Konferensi Manajemen Nasional' },
+                    { id: 11, nama: 'Hendra Wijaya', nim: '2020102011', fakultas: 'Fakultas Ekonomi', prodi: 'Akuntansi', kategori: 'Penyelenggara Kegiatan', judul: 'Seminar Perpajakan', tingkat: 'Regional', tanggal: '2025-02-20', deskripsi: 'Menyelenggarakan seminar perpajakan dengan narasumber dari DJP' },
+                    { id: 12, nama: 'Lestari Wati', nim: '2022103012', fakultas: 'Fakultas Hukum', prodi: 'Ilmu Hukum', kategori: 'Rekognisi Non Lomba', judul: 'Volunteer UNHCR', tingkat: 'Internasional', tanggal: '2025-01-10', deskripsi: 'Terpilih sebagai volunteer UNHCR dalam program refugee assistance' }
+                ];
+
+                let filteredData = [...prestasi];
+                let currentPage = 1;
+                const itemsPerPage = 10;
+                let deleteId = null;
+
+                // Render Table
+                function renderTable() {
+                    const tbody = document.getElementById('tableBody');
+                    const emptyState = document.getElementById('emptyState');
+                    const pagination = document.getElementById('pagination');
+
+                    const start = (currentPage - 1) * itemsPerPage;
+                    const end = start + itemsPerPage;
+                    const pageData = filteredData.slice(start, end);
+
+                    if (filteredData.length === 0) {
+                        tbody.innerHTML = '';
+                        emptyState.classList.remove('hidden');
+                        pagination.classList.add('hidden');
+                        return;
+                    }
+
+                    emptyState.classList.add('hidden');
+                    pagination.classList.remove('hidden');
+
+                    tbody.innerHTML = pageData.map((item, index) => `
+                <tr class="hover:bg-gray-50/50 transition-colors">
+                    <td class="px-4 py-4 text-sm text-gray-600 font-medium">${start + index + 1}</td>
+                    <td class="px-4 py-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-simawa-100 to-simawa-200 flex items-center justify-center">
+                                <span class="text-sm font-semibold text-simawa-700">${item.nama.charAt(0)}</span>
+                            </div>
+                            <span class="text-sm font-medium text-gray-800">${item.nama}</span>
+                        </div>
+                    </td>
+                    <td class="px-4 py-4 text-sm text-gray-600 font-mono">${item.nim}</td>
+                    <td class="px-4 py-4 text-sm text-gray-600">${item.fakultas}</td>
+                    <td class="px-4 py-4 text-sm text-gray-600">${item.prodi}</td>
+                    <td class="px-4 py-4">
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-sm text-gray-500">
+                            ${item.kategori}
+                        </span>
+                    </td>
+                    <td class="px-4 py-4">
+                        <div class="flex items-center justify-center gap-1">
+                            <button onclick="viewDetail(${item.id})" 
+                                class="p-2 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors" title="Detail">
+                                <ion-icon name="eye-outline" class="text-lg"></ion-icon>
+                            </button>
+                            <button onclick="editPrestasi(${item.id})" 
+                                class="p-2 text-amber-500 hover:bg-amber-50 rounded-lg transition-colors" title="Edit">
+                                <ion-icon name="create-outline" class="text-lg"></ion-icon>
+                            </button>
+                            <button onclick="deletePrestasi(${item.id})" 
+                                class="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Hapus">
+                                <ion-icon name="trash-outline" class="text-lg"></ion-icon>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+
+                    updatePagination();
+                }
+
+                // Get Category Badge Color
+                function getCategoryBadge(kategori) {
+                    switch (kategori) {
+                        case 'Prestasi Mahasiswa': return 'text-gray-500 ';
+                        case 'Penyelenggara Kegiatan': return 'text-gray-500';
+                        case 'Rekognisi Non Lomba': return 'text-gray-500';
+                        default: return 'text-gray-500';
+                    }
+                }
+
+                // Filter Data
+                function filterData() {
+                    const search = document.getElementById('searchInput').value.toLowerCase();
+                    const fakultas = document.getElementById('filterFakultas').value;
+                    const prodi = document.getElementById('filterProdi').value;
+                    const kategori = document.getElementById('filterKategori').value;
+
+                    filteredData = prestasi.filter(item => {
+                        const matchSearch = item.nama.toLowerCase().includes(search) || item.nim.includes(search);
+                        const matchFakultas = !fakultas || item.fakultas === fakultas;
+                        const matchProdi = !prodi || item.prodi === prodi;
+                        const matchKategori = !kategori || item.kategori === kategori;
+                        return matchSearch && matchFakultas && matchProdi && matchKategori;
+                    });
+
+                    currentPage = 1;
+                    renderTable();
+                    updateActiveFilters();
+                }
+
+                // Update Active Filters
+                function updateActiveFilters() {
+                    const container = document.getElementById('activeFilters');
+                    const fakultas = document.getElementById('filterFakultas').value;
+                    const prodi = document.getElementById('filterProdi').value;
+                    const kategori = document.getElementById('filterKategori').value;
+
+                    const filters = [];
+                    if (fakultas) filters.push({ type: 'fakultas', value: fakultas });
+                    if (prodi) filters.push({ type: 'prodi', value: prodi });
+                    if (kategori) filters.push({ type: 'kategori', value: kategori });
+
+                    if (filters.length === 0) {
+                        container.classList.add('hidden');
+                        return;
+                    }
+
+                    container.classList.remove('hidden');
+                    container.innerHTML = filters.map(f => `
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-simawa-50 text-simawa-700 rounded-full text-xs font-medium">
+                    ${f.value}
+                    <button onclick="clearFilter('${f.type}')" class="hover:text-simawa-900">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
+                </span>
+            `).join('') + `
+                <button onclick="clearAllFilters()" class="text-xs text-gray-500 hover:text-gray-700 underline">
+                    Hapus Semua Filter
+                </button>
+            `;
+                }
+
+                // Clear Single Filter
+                function clearFilter(type) {
+                    document.getElementById('filter' + type.charAt(0).toUpperCase() + type.slice(1)).value = '';
+                    filterData();
+                }
+
+                // Clear All Filters
+                function clearAllFilters() {
+                    document.getElementById('searchInput').value = '';
+                    document.getElementById('filterFakultas').value = '';
+                    document.getElementById('filterProdi').value = '';
+                    document.getElementById('filterKategori').value = '';
+                    filterData();
+                }
+
+                // Update Pagination
+                function updatePagination() {
+                    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+                    const start = (currentPage - 1) * itemsPerPage + 1;
+                    const end = Math.min(currentPage * itemsPerPage, filteredData.length);
+
+                    document.getElementById('showingStart').textContent = filteredData.length ? start : 0;
+                    document.getElementById('showingEnd').textContent = end;
+                    document.getElementById('totalData').textContent = filteredData.length;
+
+                    document.getElementById('prevBtn').disabled = currentPage === 1;
+                    document.getElementById('nextBtn').disabled = currentPage === totalPages || totalPages === 0;
+
+                    const pageNumbers = document.getElementById('pageNumbers');
+                    let html = '';
+                    for (let i = 1; i <= totalPages; i++) {
+                        if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                            html += `<button onclick="goToPage(${i})" 
+                        class="px-3 py-1.5 rounded-lg text-sm ${i === currentPage ? 'bg-simawa-500 text-white' : 'text-gray-600 hover:bg-gray-100'}">${i}</button>`;
+                        } else if (i === currentPage - 2 || i === currentPage + 2) {
+                            html += '<span class="px-2 text-gray-400">...</span>';
+                        }
+                    }
+                    pageNumbers.innerHTML = html;
+                }
+
+                // Pagination Functions
+                function prevPage() { if (currentPage > 1) { currentPage--; renderTable(); } }
+                function nextPage() {
+                    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+                    if (currentPage < totalPages) { currentPage++; renderTable(); }
+                }
+                function goToPage(page) { currentPage = page; renderTable(); }
+
+                // View Detail
+                function viewDetail(id) {
+                    const item = prestasi.find(p => p.id === id);
+                    if (item) {
+                        document.getElementById('detailContent').innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 pb-4 border-b border-gray-100">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-simawa-100 to-simawa-200 flex items-center justify-center">
+                                <span class="text-2xl font-bold text-simawa-700">${item.nama.charAt(0)}</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800">${item.nama}</h4>
+                                <p class="text-sm text-gray-500">${item.nim} • ${item.prodi}</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1">Fakultas</label>
+                                <p class="text-sm font-medium text-gray-800">${item.fakultas}</p>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1">Program Studi</label>
+                                <p class="text-sm font-medium text-gray-800">${item.prodi}</p>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1">Kategori Prestasi</label>
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${getCategoryBadge(item.kategori)}">
+                                    ${item.kategori}
+                                </span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1">Tingkat</label>
+                                <p class="text-sm font-medium text-gray-800">${item.tingkat}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">Judul Prestasi</label>
+                            <p class="text-sm font-semibold text-gray-800">${item.judul}</p>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">Tanggal</label>
+                            <p class="text-sm font-medium text-gray-800">${item.tanggal}</p>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">Deskripsi</label>
+                            <p class="text-sm text-gray-600">${item.deskripsi}</p>
+                        </div>
+                    </div>
+                `;
+                        document.getElementById('detailModal').classList.remove('hidden');
+                    }
+                }
+
+                // Close Detail Modal
+                function closeDetailModal() {
+                    document.getElementById('detailModal').classList.add('hidden');
+                }
+
+                // Edit Prestasi
+                function editPrestasi(id) {
+                    showToast('Fitur edit akan segera tersedia!', 'info');
+                }
+
+                // Delete Prestasi
+                function deletePrestasi(id) {
+                    deleteId = id;
+                    document.getElementById('deleteModal').classList.remove('hidden');
+                }
+
+                // Close Delete Modal
+                function closeDeleteModal() {
+                    document.getElementById('deleteModal').classList.add('hidden');
+                    deleteId = null;
+                }
+
+                // Confirm Delete
+                function confirmDelete() {
+                    if (deleteId) {
+                        prestasi = prestasi.filter(p => p.id !== deleteId);
+                        filteredData = filteredData.filter(p => p.id !== deleteId);
+                        showToast('Data prestasi berhasil dihapus!', 'success');
+                        renderTable();
+                    }
+                    closeDeleteModal();
+                }
+
+                // Download Certificate
+                function downloadCertificate() {
+                    showToast('Mengunduh sertifikat...', 'success');
+                    closeDetailModal();
+                }
+
+                // Export Data
+                function exportData() {
+                    showToast('Data berhasil diexport!', 'success');
+                }
+
+                // Show Toast
+                function showToast(message, type = 'success') {
+                    const toast = document.getElementById('toast');
+                    const toastIcon = document.getElementById('toastIcon');
+                    const toastMessage = document.getElementById('toastMessage');
+
+                    toastMessage.textContent = message;
+                    const icons = { success: 'checkmark-circle', error: 'alert-circle', info: 'information-circle' };
+                    const colors = { success: 'text-green-500', error: 'text-red-500', info: 'text-blue-500' };
+                    toastIcon.setAttribute('name', icons[type] || icons.success);
+                    toastIcon.className = `text-xl ${colors[type] || colors.success}`;
+
+                    toast.classList.remove('translate-y-20', 'opacity-0');
+                    setTimeout(() => { toast.classList.add('translate-y-20', 'opacity-0'); }, 3000);
+                }
+
+                // Initialize
+                renderTable();
+            </script>
+        </main>
+    </div>
+</body>
+
+</html>

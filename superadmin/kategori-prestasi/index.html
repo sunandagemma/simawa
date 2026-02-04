@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Superadmin | SIMAWA</title>
+
+    <link rel="icon" type="image/png" href="/image/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'simawa': {
+                            '50': '#BDE8F5', '100': '#9DD9EF', '200': '#7DCAE9',
+                            '300': '#4988C4', '400': '#3A7AB8', '500': '#1C4D8D',
+                            '600': '#184480', '700': '#143B73', '800': '#0F2854', '900': '#0A1F45',
+                        },
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 font-inter">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="sidebar w-64 bg-gradient-to-b from-[#1C4D8D] to-[#0F2854] text-white fixed h-full z-40">
+            <div class="p-6 border-b border-white/10">
+                <div class="flex items-center gap-3 w-full">
+                    <img src="/image/logo.png" alt="Logo" class="h-16 object-contain bg-white/10 rounded-lg p-2 w-full">
+                </div>
+            </div>
+
+            <nav class="p-4">
+                <ul class="space-y-1">
+                    <li><a href="/superadmin/dashboard/"
+                            class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                name="grid" class="text-xl"></ion-icon>Dashboard</a></li>
+                </ul>
+
+                <p class="text-xs text-white/50 uppercase tracking-wider mb-3 px-3 mt-6">Menu</p>
+                <ul class="space-y-1">
+                    <li class="submenu-parent open">
+                        <button onclick="this.parentElement.classList.toggle('open')"
+                            class="sidebar-menu-item flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm">
+                            <span class="flex items-center gap-3"><ion-icon name="cloud-done-outline"
+                                    class="text-xl"></ion-icon>SIMKATMAWA</span>
+                            <ion-icon name="chevron-down-outline"
+                                class="text-sm submenu-arrow transition-transform"></ion-icon>
+                        </button>
+                        <ul class="submenu pl-8 space-y-1 mt-1">
+                            <li><a href="/superadmin/kategori-prestasi/"
+                                    class="sidebar-menu-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon
+                                        name="medal-outline" class="text-lg"></ion-icon>Kategori Prestasi</a></li>
+                            <li><a href="/superadmin/formulir-prestasi/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="reader-outline" class="text-lg"></ion-icon>Formulir Prestasi</a></li>
+                            <li><a href="/superadmin/daftar-prestasi/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="school-outline" class="text-lg"></ion-icon>Daftar Prestasi</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu-parent">
+                        <button onclick="this.parentElement.classList.toggle('open')"
+                            class="sidebar-menu-item flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm">
+                            <span class="flex items-center gap-3"><ion-icon name="podium-outline"
+                                    class="text-xl"></ion-icon>Internal Universitas</span>
+                            <ion-icon name="chevron-down-outline"
+                                class="text-sm submenu-arrow transition-transform"></ion-icon>
+                        </button>
+                        <ul class="submenu pl-8 space-y-1 mt-1">
+                            <li><a href="/superadmin/jenis-sertifikat/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="library-outline" class="text-lg"></ion-icon>Jenis Sertifikat</a></li>
+                            <li><a href="/superadmin/daftar-mahasiswa/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="person-circle-outline" class="text-lg"></ion-icon>Daftar Mahasiswa</a>
+                            </li>
+                            <li><a href="/superadmin/kegiatan/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="pricetags-outline" class="text-lg"></ion-icon>Kegiatan</a></li>
+                        </ul>
+                    </li>
+
+                    <p class="text-xs text-white/50 uppercase tracking-wider mb-3 px-3 mt-6">User</p>
+                    <li><a href="/superadmin/kegiatan-mahasiswa/"
+                            class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon
+                                name="people-outline" class="text-xl"></ion-icon>Kelola Users</a></li>
+                    <li><a href="/superadmin/log-aktivitas/"
+                            class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon
+                                name="shield-checkmark-outline" class="text-xl"></ion-icon>Log Aktivitas</a></li>
+                </ul>
+            </nav>
+            <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
+                <a href="/"
+                    class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm hover:bg-white/10 transition-colors"><ion-icon
+                        name="log-out" class="text-xl"></ion-icon>Keluar</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 ml-64">
+            <header class="bg-white border-b border-gray-200 sticky top-0 z-30">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800">Kategori Prestasi</h2>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-3 pl-4 border-l border-gray-200">
+                            <div class="w-10 h-10 rounded-full bg-[#BDE8F5] flex items-center justify-center">
+                                <ion-icon name="shield-checkmark" class="text-[#0F2854] text-xl"></ion-icon>
+                            </div>
+                            <div class="hidden sm:block">
+                                <p class="text-sm font-semibold text-gray-800">Superadmin</p>
+                                <p class="text-xs text-gray-500">admin@unwahas.ac.id</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="p-6">
+                <!-- Header Section -->
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Daftar Kategori Prestasi</h3>
+                        <p class="text-sm text-gray-500 mt-1">Kelola kategori prestasi mahasiswa</p>
+                    </div>
+                    <button onclick="openModal()"
+                        class="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-simawa-500 to-simawa-700 text-white rounded-lg hover:from-simawa-600 hover:to-simawa-800 transition-all shadow-lg shadow-simawa-500/25 text-sm font-medium">
+                        <ion-icon name="add-circle-outline" class="text-lg"></ion-icon>
+                        Tambah Kategori
+                    </button>
+                </div>
+
+                <!-- Table Card -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
+                                <tr>
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-16">
+                                        No</th>
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        Nama Prestasi</th>
+                                    <th
+                                        class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        Keterangan</th>
+                                    <th
+                                        class="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider w-32">
+                                        Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody" class="divide-y divide-gray-100">
+                                <!-- Data will be rendered here by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="emptyState" class="hidden py-12 text-center">
+                        <ion-icon name="medal-outline" class="text-6xl text-gray-300 mb-4"></ion-icon>
+                        <p class="text-gray-500">Belum ada data kategori prestasi</p>
+                        <button onclick="openModal()"
+                            class="mt-4 text-simawa-500 hover:text-simawa-700 font-medium text-sm">
+                            + Tambah Kategori Baru
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Form -->
+            <div id="modal" class="fixed inset-0 z-50 hidden">
+                <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeModal()"></div>
+                <div class="flex items-center justify-center min-h-screen p-4">
+                    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md transform transition-all">
+                        <div class="p-6 border-b border-gray-100">
+                            <h3 id="modalTitle" class="text-lg font-semibold text-gray-800">Tambah Kategori Prestasi
+                            </h3>
+                            <p class="text-sm text-gray-500 mt-1">Isi form berikut untuk menambahkan kategori baru</p>
+                        </div>
+                        <form id="categoryForm" onsubmit="saveCategory(event)" class="p-6 space-y-4">
+                            <input type="hidden" id="categoryId">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Nama Prestasi</label>
+                                <input type="text" id="namaPrestasi" required
+                                    class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-simawa-500/20 focus:border-simawa-500 transition-all text-sm"
+                                    placeholder="Masukkan nama prestasi">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Keterangan</label>
+                                <textarea id="keterangan" rows="3" required
+                                    class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-simawa-500/20 focus:border-simawa-500 transition-all text-sm resize-none"
+                                    placeholder="Masukkan keterangan kategori"></textarea>
+                            </div>
+                            <div class="flex gap-3 pt-4">
+                                <button type="button" onclick="closeModal()"
+                                    class="flex-1 px-4 py-2.5 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-all text-sm font-medium">
+                                    Batal
+                                </button>
+                                <button type="submit"
+                                    class="flex-1 px-4 py-2.5 bg-gradient-to-r from-simawa-500 to-simawa-700 text-white rounded-lg hover:from-simawa-600 hover:to-simawa-800 transition-all text-sm font-medium">
+                                    Simpan
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delete Confirmation Modal -->
+            <div id="deleteModal" class="fixed inset-0 z-50 hidden">
+                <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeDeleteModal()"></div>
+                <div class="flex items-center justify-center min-h-screen p-4">
+                    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-sm transform transition-all">
+                        <div class="p-6 text-center">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Hapus Kategori?</h3>
+                            <p class="text-sm text-gray-500 mb-6">Data yang dihapus tidak dapat dikembalikan. Apakah
+                                Anda yakin?</p>
+                            <div class="flex gap-3">
+                                <button onclick="closeDeleteModal()"
+                                    class="flex-1 px-4 py-2.5 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-all text-sm font-medium">
+                                    Batal
+                                </button>
+                                <button onclick="confirmDelete()"
+                                    class="flex-1 px-4 py-2.5 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all text-sm font-medium">
+                                    Hapus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toast Notification -->
+            <div id="toast"
+                class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300">
+                <div class="flex items-center gap-3 px-4 py-3 bg-white rounded-lg shadow-lg border border-gray-100">
+                    <ion-icon id="toastIcon" name="checkmark-circle" class="text-xl text-green-500"></ion-icon>
+                    <span id="toastMessage" class="text-sm text-gray-700">Berhasil!</span>
+                </div>
+            </div>
+
+            <script>
+                // Sample Data
+                let categories = [
+                    { id: 1, nama: 'Prestasi Mahasiswa', keterangan: 'Merupakan  kompetisi  yang diikuti oleh  mahasiswa baik tingkat Internasional,  Nasional maupun Provinsi' },
+                    { id: 2, nama: 'Penyelenggara Kegiatan', keterangan: 'Merupakan  kegiatan kejuaraan yang diselenggarakan secara mandiri oleh perguruan tinggi' },
+                    { id: 3, nama: 'Rekognisi Non Lomba', keterangan: 'Merupakan sebuah prestasi non kompetisi yang diraih oleh mahasiswa Universitas Wahid Hasyim' },
+                ];
+
+                let deleteId = null;
+
+                // Render Table
+                function renderTable() {
+                    const tbody = document.getElementById('tableBody');
+                    const emptyState = document.getElementById('emptyState');
+
+                    if (categories.length === 0) {
+                        tbody.innerHTML = '';
+                        emptyState.classList.remove('hidden');
+                        return;
+                    }
+
+                    emptyState.classList.add('hidden');
+                    tbody.innerHTML = categories.map((cat, index) => `
+                <tr class="hover:bg-gray-50/50 transition-colors">
+                    <td class="px-6 py-4 text-sm text-gray-600 font-medium">${index + 1}</td>
+                    <td class="px-6 py-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-sm font-medium text-gray-800">${cat.nama}</span>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-600 max-w-md">
+                        <p class="line-clamp-2">${cat.keterangan}</p>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="flex items-center justify-center gap-2">
+                            <button onclick="editCategory(${cat.id})" 
+                                class="p-2 text-amber-500 hover:bg-amber-50 rounded-lg transition-colors" title="Edit">
+                                <ion-icon name="create-outline" class="text-lg"></ion-icon>
+                            </button>
+                            <button onclick="deleteCategory(${cat.id})" 
+                                class="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Hapus">
+                                <ion-icon name="trash-outline" class="text-lg"></ion-icon>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+                }
+
+                // Open Modal
+                function openModal() {
+                    document.getElementById('modal').classList.remove('hidden');
+                    document.getElementById('modalTitle').textContent = 'Tambah Kategori Prestasi';
+                    document.getElementById('categoryForm').reset();
+                    document.getElementById('categoryId').value = '';
+                }
+
+                // Close Modal
+                function closeModal() {
+                    document.getElementById('modal').classList.add('hidden');
+                }
+
+                // Edit Category
+                function editCategory(id) {
+                    const category = categories.find(c => c.id === id);
+                    if (category) {
+                        document.getElementById('modal').classList.remove('hidden');
+                        document.getElementById('modalTitle').textContent = 'Edit Kategori Prestasi';
+                        document.getElementById('categoryId').value = category.id;
+                        document.getElementById('namaPrestasi').value = category.nama;
+                        document.getElementById('keterangan').value = category.keterangan;
+                    }
+                }
+
+                // Save Category
+                function saveCategory(event) {
+                    event.preventDefault();
+                    const id = document.getElementById('categoryId').value;
+                    const nama = document.getElementById('namaPrestasi').value;
+                    const keterangan = document.getElementById('keterangan').value;
+
+                    if (id) {
+                        // Update existing
+                        const index = categories.findIndex(c => c.id === parseInt(id));
+                        if (index !== -1) {
+                            categories[index] = { ...categories[index], nama, keterangan };
+                            showToast('Kategori berhasil diperbarui!', 'success');
+                        }
+                    } else {
+                        // Add new
+                        const newId = categories.length > 0 ? Math.max(...categories.map(c => c.id)) + 1 : 1;
+                        categories.push({ id: newId, nama, keterangan });
+                        showToast('Kategori berhasil ditambahkan!', 'success');
+                    }
+
+                    closeModal();
+                    renderTable();
+                }
+
+                // Delete Category
+                function deleteCategory(id) {
+                    deleteId = id;
+                    document.getElementById('deleteModal').classList.remove('hidden');
+                }
+
+                // Close Delete Modal
+                function closeDeleteModal() {
+                    document.getElementById('deleteModal').classList.add('hidden');
+                    deleteId = null;
+                }
+
+                // Confirm Delete
+                function confirmDelete() {
+                    if (deleteId) {
+                        categories = categories.filter(c => c.id !== deleteId);
+                        showToast('Kategori berhasil dihapus!', 'success');
+                        renderTable();
+                    }
+                    closeDeleteModal();
+                }
+
+                // Show Toast
+                function showToast(message, type = 'success') {
+                    const toast = document.getElementById('toast');
+                    const toastIcon = document.getElementById('toastIcon');
+                    const toastMessage = document.getElementById('toastMessage');
+
+                    toastMessage.textContent = message;
+                    toastIcon.setAttribute('name', type === 'success' ? 'checkmark-circle' : 'alert-circle');
+                    toastIcon.className = `text-xl ${type === 'success' ? 'text-green-500' : 'text-red-500'}`;
+
+                    toast.classList.remove('translate-y-20', 'opacity-0');
+
+                    setTimeout(() => {
+                        toast.classList.add('translate-y-20', 'opacity-0');
+                    }, 3000);
+                }
+
+                // Initialize
+                renderTable();
+            </script>
+        </main>
+    </div>
+</body>
+
+</html>
