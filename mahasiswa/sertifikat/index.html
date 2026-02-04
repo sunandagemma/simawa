@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sertifikat - Mahasiswa | SIMAWA</title>
+
+    <link rel="icon" type="image/png" href="/image/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'persian-blue': {
+                            '50': '#e9f4ff', '100': '#d7ecff', '200': '#b7d9ff', '300': '#8bbfff',
+                            '400': '#5e95ff', '500': '#396dff', '600': '#1740ff', '700': '#1f42f6',
+                            '800': '#0e2fc5', '900': '#15309a', '950': '#0d1a59',
+                        },
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 font-inter">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="sidebar w-64 bg-gradient-to-b from-[#1C4D8D] to-[#0F2854] text-white fixed h-full z-40">
+            <div class="p-6 border-b border-white/10">
+                <div class="flex items-center gap-3 w-full">
+                    <img src="/image/logo.png" alt="Logo" class="h-16 object-contain bg-white/10 rounded-lg p-2 w-full">
+                </div>
+            </div>
+
+            <nav class="p-4">
+                <p class="text-xs text-white/50 uppercase tracking-wider mb-3 px-3">Menu Utama</p>
+                <ul class="space-y-1">
+                    <li><a href="/mahasiswa/dashboard/"
+                            class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm">
+                            <ion-icon name="grid" class="text-xl"></ion-icon>Dashboard</a></li>
+                    <li><a href="/mahasiswa/prestasi/"
+                            class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm">
+                            <ion-icon name="trophy" class="text-xl"></ion-icon>Prestasi</a></li>
+                    <li><a href="/mahasiswa/sertifikat/"
+                            class="sidebar-menu-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm">
+                            <ion-icon name="medal" class="text-xl"></ion-icon>Sertifikat</a></li>
+                    <li><a href="/mahasiswa/kegiatan/"
+                            class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm">
+                            <ion-icon name="calendar" class="text-xl"></ion-icon>Kegiatan</a></li>
+                </ul>
+            </nav>
+            <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
+                <a href="/"
+                    class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm hover:bg-white/10 transition-colors"><ion-icon
+                        name="log-out" class="text-xl"></ion-icon>Keluar</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 ml-64">
+            <header class="bg-white border-b border-gray-200 sticky top-0 z-30">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800">Sertifikat</h2>
+                        <p class="text-sm text-gray-500">Riwayat sertifikat yang sudah diajukan</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-3 pl-4 border-l border-gray-200">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
+                                <ion-icon name="person" class="text-emerald-600 text-xl"></ion-icon>
+                            </div>
+                            <div class="hidden sm:block">
+                                <p class="text-sm font-semibold text-gray-800">Ahmad Syaiful Rizki</p>
+                                <p class="text-xs text-gray-500">25103041039</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="p-6">
+                <!-- Header Section -->
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Daftar Sertifikat</h3>
+                        <p class="text-sm text-gray-500 mt-1">Kelola dan ajukan sertifikat yang telah Anda raih</p>
+                    </div>
+                    <button onclick="openFormModal()"
+                        class="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#1C4D8D] to-[#0F2854] text-white rounded-lg hover:from-[#163d6d] hover:to-[#0c2040] transition-all shadow-lg shadow-blue-500/25 text-sm font-medium">
+                        <ion-icon name="add-circle-outline" class="text-lg"></ion-icon>
+                        Ajukan Sertifikat
+                    </button>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-6">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="flex-1 relative">
+                            <ion-icon name="search-outline"
+                                class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></ion-icon>
+                            <input type="text" id="searchInput" onkeyup="searchTable()"
+                                class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-sm"
+                                placeholder="Cari sertifikat...">
+                        </div>
+                        <select id="filterCategory" onchange="filterTable()"
+                            class="px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-sm">
+                            <option value="">Semua Jenis</option>
+                            <option value="Sertifikat Kompetensi">Sertifikat Kompetensi</option>
+                            <option value="Sertifikat Bahasa Internasional">Sertifikat Bahasa Internasional</option>
+                            <option value="Sertifikat Magang">Sertifikat Magang</option>
+                            <option value="Sertifikat Pendidikan Karakter">Sertifikat Pendidikan Karakter</option>
+                            <option value="Sertifikat Penghargaan">Sertifikat Penghargaan</option>
+                            <option value="Sertifikat Organisasi">Sertifikat Organisasi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full" id="sertifikatTable">
+                            <thead class="bg-[#1B4986] border-b border-gray-100">
+                                <tr>
+                                    <th
+                                        class="p-6 text-left text-xs font-semibold text-white uppercase tracking-wider w-16">
+                                        No</th>
+                                    <th class="p-6 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                                        Nama Sertifikat</th>
+                                    <th class="p-6 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                                        Jenis Sertifikat</th>
+                                    <th class="p-6 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                                        Status</th>
+                                    <th
+                                        class="p-6 text-center text-xs font-semibold text-white uppercase tracking-wider w-40">
+                                        Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100" id="sertifikatTableBody">
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-600">1</td>
+                                    <td class="px-6 py-4">
+                                        <div class="font-medium text-gray-800">Microsoft Office Specialist (MOS)</div>
+                                        <div class="text-xs text-gray-500 mt-1">15 Jan 2026</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">
+                                        Sertifikat Kompetensi
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span>
+                                            Terverifikasi
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center justify-center gap-2">
+                                            <button onclick="viewSertifikat(1)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-emerald-500 rounded-lg hover:bg-emerald-600 transition-colors"
+                                                title="Lihat Detail">
+                                                <ion-icon name="eye-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                            <button onclick="editSertifikat(1)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-[#18437E] rounded-lg hover:bg-[#133366] transition-colors"
+                                                title="Edit">
+                                                <ion-icon name="create-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                            <button onclick="deleteSertifikat(1)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors"
+                                                title="Hapus">
+                                                <ion-icon name="trash-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-600">2</td>
+                                    <td class="px-6 py-4">
+                                        <div class="font-medium text-gray-800">TOEFL ITP Score 550</div>
+                                        <div class="text-xs text-gray-500 mt-1">10 Jan 2026</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">
+                                        Sertifikat Bahasa Internasional
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">
+                                            <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full mr-1.5"></span>
+                                            Menunggu Verifikasi
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center justify-center gap-2">
+                                            <button onclick="viewSertifikat(2)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-emerald-500 rounded-lg hover:bg-emerald-600 transition-colors"
+                                                title="Lihat Detail">
+                                                <ion-icon name="eye-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                            <button onclick="editSertifikat(2)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-[#18437E] rounded-lg hover:bg-[#133366] transition-colors"
+                                                title="Edit">
+                                                <ion-icon name="create-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                            <button onclick="deleteSertifikat(2)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors"
+                                                title="Hapus">
+                                                <ion-icon name="trash-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-600">3</td>
+                                    <td class="px-6 py-4">
+                                        <div class="font-medium text-gray-800">Magang PT Telkom Indonesia</div>
+                                        <div class="text-xs text-gray-500 mt-1">05 Jan 2026</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">
+                                        Sertifikat Magang
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span>
+                                            Terverifikasi
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center justify-center gap-2">
+                                            <button onclick="viewSertifikat(3)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-emerald-500 rounded-lg hover:bg-emerald-600 transition-colors"
+                                                title="Lihat Detail">
+                                                <ion-icon name="eye-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                            <button onclick="editSertifikat(3)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-[#18437E] rounded-lg hover:bg-[#133366] transition-colors"
+                                                title="Edit">
+                                                <ion-icon name="create-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                            <button onclick="deleteSertifikat(3)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors"
+                                                title="Hapus">
+                                                <ion-icon name="trash-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-600">4</td>
+                                    <td class="px-6 py-4">
+                                        <div class="font-medium text-gray-800">Pelatihan Kepemimpinan Mahasiswa</div>
+                                        <div class="text-xs text-gray-500 mt-1">20 Des 2025</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">
+                                        Sertifikat Pendidikan Karakter
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span>
+                                            Terverifikasi
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center justify-center gap-2">
+                                            <button onclick="viewSertifikat(4)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-emerald-500 rounded-lg hover:bg-emerald-600 transition-colors"
+                                                title="Lihat Detail">
+                                                <ion-icon name="eye-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                            <button onclick="editSertifikat(4)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-[#18437E] rounded-lg hover:bg-[#133366] transition-colors"
+                                                title="Edit">
+                                                <ion-icon name="create-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                            <button onclick="deleteSertifikat(4)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors"
+                                                title="Hapus">
+                                                <ion-icon name="trash-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-600">5</td>
+                                    <td class="px-6 py-4">
+                                        <div class="font-medium text-gray-800">Penghargaan Mahasiswa Berprestasi</div>
+                                        <div class="text-xs text-gray-500 mt-1">15 Des 2025</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">
+                                        Sertifikat Penghargaan
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-700">
+                                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full mr-1.5"></span>
+                                            Ditolak
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center justify-center gap-2">
+                                            <button onclick="viewSertifikat(5)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-emerald-500 rounded-lg hover:bg-emerald-600 transition-colors"
+                                                title="Lihat Detail">
+                                                <ion-icon name="eye-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                            <button onclick="editSertifikat(5)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-[#18437E] rounded-lg hover:bg-[#133366] transition-colors"
+                                                title="Edit">
+                                                <ion-icon name="create-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                            <button onclick="deleteSertifikat(5)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors"
+                                                title="Hapus">
+                                                <ion-icon name="trash-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-600">6</td>
+                                    <td class="px-6 py-4">
+                                        <div class="font-medium text-gray-800">Pengurus BEM Fakultas Teknik</div>
+                                        <div class="text-xs text-gray-500 mt-1">10 Des 2025</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">
+                                        Sertifikat Organisasi
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span>
+                                            Terverifikasi
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center justify-center gap-2">
+                                            <button onclick="viewSertifikat(6)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-emerald-500 rounded-lg hover:bg-emerald-600 transition-colors"
+                                                title="Lihat Detail">
+                                                <ion-icon name="eye-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                            <button onclick="editSertifikat(6)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-[#18437E] rounded-lg hover:bg-[#133366] transition-colors"
+                                                title="Edit">
+                                                <ion-icon name="create-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                            <button onclick="deleteSertifikat(6)"
+                                                class="flex h-8 w-8 items-center justify-center text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors"
+                                                title="Hapus">
+                                                <ion-icon name="trash-outline" class="text-lg"></ion-icon>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div
+                        class="px-6 py-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <p class="text-sm text-gray-500">Menampilkan 1-6 dari 6 data</p>
+                        <div class="flex items-center gap-2">
+                            <button
+                                class="px-3 py-1.5 text-sm text-gray-500 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors disabled:opacity-50"
+                                disabled>
+                                <ion-icon name="chevron-back-outline"></ion-icon>
+                            </button>
+                            <button
+                                class="px-3 py-1.5 text-sm text-white bg-[#1C4D8D] rounded-lg hover:bg-[#163d6d] transition-colors">
+                                1
+                            </button>
+                            <button
+                                class="px-3 py-1.5 text-sm text-gray-500 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors disabled:opacity-50"
+                                disabled>
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Modal (Add/Edit) -->
+            <div id="formModal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+                <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeFormModal()"></div>
+                <div class="flex items-center justify-center min-h-screen p-4">
+                    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-xl transform transition-all">
+                        <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+                            <h3 id="formModalTitle" class="text-lg font-semibold text-gray-800">Ajukan Sertifikat</h3>
+                            <button onclick="closeFormModal()"
+                                class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                                <ion-icon name="close-outline" class="text-xl text-gray-500"></ion-icon>
+                            </button>
+                        </div>
+                        <form id="sertifikatForm" onsubmit="submitForm(event)"
+                            class="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
+                            <input type="hidden" id="formEditId" value="">
+
+                            <!-- Nama Sertifikat -->
+                            <div>
+                                <label for="formNama" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Nama Sertifikat <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="formNama" required
+                                    class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-sm"
+                                    placeholder="Contoh: Microsoft Office Specialist">
+                            </div>
+
+                            <!-- Jenis Sertifikat -->
+                            <div>
+                                <label for="formJenis" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Jenis Sertifikat <span class="text-red-500">*</span>
+                                </label>
+                                <select id="formJenis" required
+                                    class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-sm">
+                                    <option value="">Pilih Jenis Sertifikat</option>
+                                    <option value="Sertifikat Kompetensi">Sertifikat Kompetensi</option>
+                                    <option value="Sertifikat Bahasa Internasional">Sertifikat Bahasa Internasional
+                                    </option>
+                                    <option value="Sertifikat Magang">Sertifikat Magang</option>
+                                    <option value="Sertifikat Pendidikan Karakter">Sertifikat Pendidikan Karakter
+                                    </option>
+                                    <option value="Sertifikat Penghargaan">Sertifikat Penghargaan</option>
+                                    <option value="Sertifikat Organisasi">Sertifikat Organisasi</option>
+                                </select>
+                            </div>
+
+                            <!-- Tanggal -->
+                            <div>
+                                <label for="formTanggal" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Tanggal Sertifikat <span class="text-red-500">*</span>
+                                </label>
+                                <input type="date" id="formTanggal" required
+                                    class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-sm">
+                            </div>
+
+                            <!-- Nama Penyelenggara -->
+                            <div>
+                                <label for="formPenyelenggara" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Nama Penyelenggara <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="formPenyelenggara" required
+                                    class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-sm"
+                                    placeholder="Contoh: Microsoft Corporation">
+                            </div>
+
+                            <!-- Deskripsi -->
+                            <div>
+                                <label for="formDeskripsi" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Deskripsi
+                                </label>
+                                <textarea id="formDeskripsi" rows="3"
+                                    class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-sm resize-none"
+                                    placeholder="Jelaskan tentang sertifikat ini..."></textarea>
+                            </div>
+
+                            <!-- Upload File -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">
+                                    Upload Sertifikat <span class="text-red-500">*</span>
+                                </label>
+                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors cursor-pointer"
+                                    onclick="document.getElementById('formFile').click()">
+                                    <input type="file" id="formFile" accept=".pdf,.jpg,.jpeg,.png" class="hidden"
+                                        onchange="handleFileUpload(event)">
+                                    <div id="filePreview" class="hidden">
+                                        <ion-icon name="document-outline"
+                                            class="text-4xl text-blue-500 mx-auto"></ion-icon>
+                                        <p id="fileName" class="text-sm text-gray-700 mt-2 font-medium"></p>
+                                        <button type="button" onclick="event.stopPropagation(); removeFile()"
+                                            class="text-xs text-red-500 hover:text-red-700 mt-1">Hapus File</button>
+                                    </div>
+                                    <div id="filePlaceholder">
+                                        <ion-icon name="cloud-upload-outline"
+                                            class="text-4xl text-gray-400 mx-auto"></ion-icon>
+                                        <p class="text-sm text-gray-500 mt-2">Klik untuk upload file</p>
+                                        <p class="text-xs text-gray-400 mt-1">Format: PDF, JPG, PNG (Maks. 5MB)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Status (Read Only) -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                                <div class="px-4 py-2.5 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                    <span class="inline-flex items-center text-sm text-yellow-700">
+                                        <span class="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
+                                        Menunggu Verifikasi
+                                    </span>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">Status akan diperbarui setelah diverifikasi oleh
+                                    admin</p>
+                            </div>
+                        </form>
+                        <div class="p-6 border-t border-gray-100 flex gap-3">
+                            <button type="button" onclick="closeFormModal()"
+                                class="flex-1 px-4 py-2.5 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-all text-sm font-medium">
+                                Batal
+                            </button>
+                            <button type="submit" form="sertifikatForm"
+                                class="flex-1 px-4 py-2.5 bg-gradient-to-r from-[#1C4D8D] to-[#0F2854] text-white rounded-lg hover:from-[#163d6d] hover:to-[#0c2040] transition-all text-sm font-medium">
+                                <span id="formSubmitText">Ajukan</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View Detail Modal -->
+            <div id="viewModal" class="fixed inset-0 z-50 hidden">
+                <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeViewModal()"></div>
+                <div class="flex items-center justify-center min-h-screen p-4">
+                    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg transform transition-all">
+                        <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+                            <h3 class="text-lg font-semibold text-gray-800">Detail Sertifikat</h3>
+                            <button onclick="closeViewModal()"
+                                class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                                <ion-icon name="close-outline" class="text-xl text-gray-500"></ion-icon>
+                            </button>
+                        </div>
+                        <div class="p-6 space-y-4" id="viewModalContent">
+                            <!-- Content will be populated by JavaScript -->
+                        </div>
+                        <div class="p-6 border-t border-gray-100">
+                            <button onclick="closeViewModal()"
+                                class="w-full px-4 py-2.5 bg-gradient-to-r from-[#1C4D8D] to-[#0F2854] text-white rounded-lg hover:from-[#163d6d] hover:to-[#0c2040] transition-all text-sm font-medium">
+                                Tutup
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delete Confirmation Modal -->
+            <div id="deleteModal" class="fixed inset-0 z-50 hidden">
+                <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeDeleteModal()"></div>
+                <div class="flex items-center justify-center min-h-screen p-4">
+                    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-sm transform transition-all">
+                        <div class="p-6 text-center">
+                            <div
+                                class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <ion-icon name="trash-outline" class="text-3xl text-red-500"></ion-icon>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Hapus Sertifikat?</h3>
+                            <p class="text-sm text-gray-500 mb-6">Data sertifikat yang dihapus tidak dapat dikembalikan.
+                                Apakah Anda yakin?</p>
+                            <div class="flex gap-3">
+                                <button onclick="closeDeleteModal()"
+                                    class="flex-1 px-4 py-2.5 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-all text-sm font-medium">
+                                    Batal
+                                </button>
+                                <button onclick="confirmDelete()"
+                                    class="flex-1 px-4 py-2.5 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all text-sm font-medium">
+                                    Hapus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toast Notification -->
+            <div id="toast"
+                class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300">
+                <div class="flex items-center gap-3 px-4 py-3 bg-white rounded-lg shadow-lg border border-gray-100">
+                    <ion-icon id="toastIcon" name="checkmark-circle" class="text-xl text-green-500"></ion-icon>
+                    <span id="toastMessage" class="text-sm text-gray-700">Berhasil!</span>
+                </div>
+            </div>
+
+            <script>
+                // Sample data for sertifikat
+                const sertifikatData = [
+                    { id: 1, nama: 'Microsoft Office Specialist (MOS)', jenis: 'Sertifikat Kompetensi', tanggal: '15 Jan 2026', status: 'Terverifikasi' },
+                    { id: 2, nama: 'TOEFL ITP Score 550', jenis: 'Sertifikat Bahasa Internasional', tanggal: '10 Jan 2026', status: 'Menunggu Verifikasi' },
+                    { id: 3, nama: 'Magang PT Telkom Indonesia', jenis: 'Sertifikat Magang', tanggal: '05 Jan 2026', status: 'Terverifikasi' },
+                    { id: 4, nama: 'Pelatihan Kepemimpinan Mahasiswa', jenis: 'Sertifikat Pendidikan Karakter', tanggal: '20 Des 2025', status: 'Terverifikasi' },
+                    { id: 5, nama: 'Penghargaan Mahasiswa Berprestasi', jenis: 'Sertifikat Penghargaan', tanggal: '15 Des 2025', status: 'Ditolak' },
+                    { id: 6, nama: 'Pengurus BEM Fakultas Teknik', jenis: 'Sertifikat Organisasi', tanggal: '10 Des 2025', status: 'Terverifikasi' }
+                ];
+
+                let deleteId = null;
+                let uploadedFile = null;
+
+                // Open form modal for adding new sertifikat
+                function openFormModal() {
+                    document.getElementById('formModalTitle').textContent = 'Ajukan Sertifikat';
+                    document.getElementById('formSubmitText').textContent = 'Ajukan';
+                    document.getElementById('formEditId').value = '';
+                    document.getElementById('sertifikatForm').reset();
+                    removeFile();
+                    document.getElementById('formModal').classList.remove('hidden');
+                }
+
+                // Open form modal for editing sertifikat
+                function editSertifikat(id) {
+                    const sertifikat = sertifikatData.find(s => s.id === id);
+                    if (sertifikat) {
+                        document.getElementById('formModalTitle').textContent = 'Edit Sertifikat';
+                        document.getElementById('formSubmitText').textContent = 'Simpan';
+                        document.getElementById('formEditId').value = id;
+                        document.getElementById('formNama').value = sertifikat.nama;
+                        document.getElementById('formJenis').value = sertifikat.jenis;
+                        // In real app, parse date properly
+                        document.getElementById('formTanggal').value = '';
+                        document.getElementById('formPenyelenggara').value = sertifikat.penyelenggara || '';
+                        document.getElementById('formDeskripsi').value = sertifikat.deskripsi || '';
+
+                        // Show file preview for existing file (simulated)
+                        document.getElementById('filePreview').classList.remove('hidden');
+                        document.getElementById('filePlaceholder').classList.add('hidden');
+                        document.getElementById('fileName').textContent = 'sertifikat_' + id + '.pdf';
+                        uploadedFile = { name: 'sertifikat_' + id + '.pdf' };
+
+                        document.getElementById('formModal').classList.remove('hidden');
+                    }
+                }
+
+                // Close form modal
+                function closeFormModal() {
+                    document.getElementById('formModal').classList.add('hidden');
+                }
+
+                // Handle file upload
+                function handleFileUpload(event) {
+                    const file = event.target.files[0];
+                    if (file) {
+                        // Validate file size (max 5MB)
+                        if (file.size > 5 * 1024 * 1024) {
+                            showToast('Ukuran file maksimal 5MB', 'error');
+                            return;
+                        }
+
+                        uploadedFile = file;
+                        document.getElementById('filePreview').classList.remove('hidden');
+                        document.getElementById('filePlaceholder').classList.add('hidden');
+                        document.getElementById('fileName').textContent = file.name;
+                    }
+                }
+
+                // Remove uploaded file
+                function removeFile() {
+                    uploadedFile = null;
+                    document.getElementById('formFile').value = '';
+                    document.getElementById('filePreview').classList.add('hidden');
+                    document.getElementById('filePlaceholder').classList.remove('hidden');
+                }
+
+                // Submit form
+                function submitForm(event) {
+                    event.preventDefault();
+
+                    const editId = document.getElementById('formEditId').value;
+                    const nama = document.getElementById('formNama').value;
+                    const jenis = document.getElementById('formJenis').value;
+                    const tanggal = document.getElementById('formTanggal').value;
+                    const penyelenggara = document.getElementById('formPenyelenggara').value;
+                    const deskripsi = document.getElementById('formDeskripsi').value;
+
+                    // Validate file upload for new submissions
+                    if (!editId && !uploadedFile) {
+                        showToast('Harap upload file sertifikat', 'error');
+                        return;
+                    }
+
+                    // In real app, this would make an API call
+                    if (editId) {
+                        showToast('Sertifikat berhasil diperbarui!', 'success');
+                    } else {
+                        showToast('Sertifikat berhasil diajukan! Status: Menunggu Verifikasi', 'success');
+                    }
+
+                    closeFormModal();
+                }
+
+                // Search table
+                function searchTable() {
+                    const input = document.getElementById('searchInput').value.toLowerCase();
+                    const rows = document.querySelectorAll('#sertifikatTableBody tr');
+
+                    rows.forEach(row => {
+                        const text = row.textContent.toLowerCase();
+                        row.style.display = text.includes(input) ? '' : 'none';
+                    });
+                }
+
+                // Filter by category
+                function filterTable() {
+                    const filter = document.getElementById('filterCategory').value;
+                    const rows = document.querySelectorAll('#sertifikatTableBody tr');
+
+                    rows.forEach(row => {
+                        const jenis = row.querySelector('td:nth-child(3)').textContent.trim();
+                        if (!filter || jenis === filter) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+                }
+
+                // View sertifikat detail
+                function viewSertifikat(id) {
+                    const sertifikat = sertifikatData.find(s => s.id === id);
+                    if (sertifikat) {
+                        const content = document.getElementById('viewModalContent');
+                        content.innerHTML = `
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-xs text-gray-500 mb-1">Nama Sertifikat</label>
+                                    <p class="font-medium text-gray-800">${sertifikat.nama}</p>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs text-gray-500 mb-1">Jenis Sertifikat</label>
+                                        <p class="font-medium text-gray-800">${sertifikat.jenis}</p>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-gray-500 mb-1">Tanggal</label>
+                                        <p class="font-medium text-gray-800">${sertifikat.tanggal}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-gray-500 mb-1">Status</label>
+                                    <p class="font-medium text-gray-800">${sertifikat.status}</p>
+                                </div>
+                            </div>
+                        `;
+                        document.getElementById('viewModal').classList.remove('hidden');
+                    }
+                }
+
+                function closeViewModal() {
+                    document.getElementById('viewModal').classList.add('hidden');
+                }
+
+                // Delete sertifikat
+                function deleteSertifikat(id) {
+                    deleteId = id;
+                    document.getElementById('deleteModal').classList.remove('hidden');
+                }
+
+                function closeDeleteModal() {
+                    document.getElementById('deleteModal').classList.add('hidden');
+                    deleteId = null;
+                }
+
+                function confirmDelete() {
+                    if (deleteId) {
+                        // In real app, this would make an API call
+                        showToast('Sertifikat berhasil dihapus!', 'success');
+                        closeDeleteModal();
+                    }
+                }
+
+                // Show toast notification
+                function showToast(message, type = 'success') {
+                    const toast = document.getElementById('toast');
+                    const toastIcon = document.getElementById('toastIcon');
+                    const toastMessage = document.getElementById('toastMessage');
+
+                    toastMessage.textContent = message;
+                    toastIcon.setAttribute('name', type === 'success' ? 'checkmark-circle' : 'alert-circle');
+                    toastIcon.className = `text-xl ${type === 'success' ? 'text-green-500' : 'text-red-500'}`;
+
+                    toast.classList.remove('translate-y-20', 'opacity-0');
+
+                    setTimeout(() => {
+                        toast.classList.add('translate-y-20', 'opacity-0');
+                    }, 3000);
+                }
+            </script>
+        </main>
+    </div>
+</body>
+
+</html>
