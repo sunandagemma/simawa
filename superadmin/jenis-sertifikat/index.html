@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Superadmin | SIMAWA</title>
-    
+
     <link rel="icon" type="image/png" href="/image/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -31,6 +33,7 @@
         }
     </script>
 </head>
+
 <body class="bg-gray-50 font-inter">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
@@ -40,48 +43,75 @@
                     <img src="/image/logo.png" alt="Logo" class="h-16 object-contain bg-white/10 rounded-lg p-2 w-full">
                 </div>
             </div>
-            
+
             <nav class="p-4">
                 <ul class="space-y-1">
-                    <li><a href="/superadmin/dashboard/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="grid" class="text-xl"></ion-icon>Dashboard</a></li>
+                    <li><a href="/superadmin/dashboard/"
+                            class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                name="grid" class="text-xl"></ion-icon>Dashboard</a></li>
                 </ul>
-                
+
                 <p class="text-xs text-white/50 uppercase tracking-wider mb-3 px-3 mt-6">Menu</p>
                 <ul class="space-y-1">
                     <li class="submenu-parent">
-                        <button onclick="this.parentElement.classList.toggle('open')" class="sidebar-menu-item flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm">
-                            <span class="flex items-center gap-3"><ion-icon name="cloud-done-outline" class="text-xl"></ion-icon>SIMKATMAWA</span>
-                            <ion-icon name="chevron-down-outline" class="text-sm submenu-arrow transition-transform"></ion-icon>
+                        <button onclick="this.parentElement.classList.toggle('open')"
+                            class="sidebar-menu-item flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm">
+                            <span class="flex items-center gap-3"><ion-icon name="cloud-done-outline"
+                                    class="text-xl"></ion-icon>SIMKATMAWA</span>
+                            <ion-icon name="chevron-down-outline"
+                                class="text-sm submenu-arrow transition-transform"></ion-icon>
                         </button>
                         <ul class="submenu pl-8 space-y-1 mt-1 hidden">
-                            <li><a href="/superadmin/kategori-prestasi/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="medal-outline" class="text-lg"></ion-icon>Kategori Prestasi</a></li>
-                            <li><a href="/superadmin/formulir-prestasi/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="reader-outline" class="text-lg"></ion-icon>Formulir Prestasi</a></li>
-                            <li><a href="/superadmin/daftar-prestasi/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="school-outline" class="text-lg"></ion-icon>Daftar Prestasi</a></li>
+                            <li><a href="/superadmin/kategori-prestasi/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="medal-outline" class="text-lg"></ion-icon>Kategori Prestasi</a></li>
+                            <li><a href="/superadmin/formulir-prestasi/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="reader-outline" class="text-lg"></ion-icon>Formulir Prestasi</a></li>
+                            <li><a href="/superadmin/daftar-prestasi/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="school-outline" class="text-lg"></ion-icon>Daftar Prestasi</a></li>
                         </ul>
                     </li>
 
                     <li class="submenu-parent open">
-                        <button onclick="this.parentElement.classList.toggle('open')" class="sidebar-menu-item flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm">
-                            <span class="flex items-center gap-3"><ion-icon name="podium-outline" class="text-xl"></ion-icon>Internal Universitas</span>
-                            <ion-icon name="chevron-down-outline" class="text-sm submenu-arrow transition-transform"></ion-icon>
+                        <button onclick="this.parentElement.classList.toggle('open')"
+                            class="sidebar-menu-item flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm">
+                            <span class="flex items-center gap-3"><ion-icon name="podium-outline"
+                                    class="text-xl"></ion-icon>Internal Universitas</span>
+                            <ion-icon name="chevron-down-outline"
+                                class="text-sm submenu-arrow transition-transform"></ion-icon>
                         </button>
                         <ul class="submenu pl-8 space-y-1 mt-1">
-                            <li><a href="/superadmin/jenis-sertifikat/" class="sidebar-menu-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="library-outline" class="text-lg"></ion-icon>Jenis Sertifikat</a></li>
-                            <li><a href="/superadmin/daftar-mahasiswa/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="person-circle-outline" class="text-lg"></ion-icon>Daftar Mahasiswa</a></li>
-                            <li><a href="/superadmin/kegiatan/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="pricetags-outline" class="text-lg"></ion-icon>Kegiatan</a></li>
+                            <li><a href="/superadmin/jenis-sertifikat/"
+                                    class="sidebar-menu-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon
+                                        name="library-outline" class="text-lg"></ion-icon>Jenis Sertifikat</a></li>
+                            <li><a href="/superadmin/daftar-mahasiswa/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="person-circle-outline" class="text-lg"></ion-icon>Daftar Mahasiswa</a>
+                            </li>
+                            <li><a href="/superadmin/kegiatan/"
+                                    class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon
+                                        name="pricetags-outline" class="text-lg"></ion-icon>Kegiatan</a></li>
                         </ul>
                     </li>
-                    
+
                     <p class="text-xs text-white/50 uppercase tracking-wider mb-3 px-3 mt-6">User</p>
-                    <li><a href="/superadmin/kegiatan-mahasiswa/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="people-outline" class="text-xl"></ion-icon>Kelola Users</a></li>
-                    <li><a href="/superadmin/log-aktivitas/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="shield-checkmark-outline" class="text-xl"></ion-icon>Log Aktivitas</a></li>
+                    <li><a href="/superadmin/kegiatan-mahasiswa/"
+                            class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon
+                                name="people-outline" class="text-xl"></ion-icon>Kelola Users</a></li>
+                    <li><a href="/superadmin/log-aktivitas/"
+                            class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon
+                                name="shield-checkmark-outline" class="text-xl"></ion-icon>Log Aktivitas</a></li>
                 </ul>
             </nav>
             <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
-                <a href="/" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm hover:bg-white/10 transition-colors"><ion-icon name="log-out" class="text-xl"></ion-icon>Keluar</a>
+                <a href="/"
+                    class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm hover:bg-white/10 transition-colors"><ion-icon
+                        name="log-out" class="text-xl"></ion-icon>Keluar</a>
             </div>
         </aside>
-        
+
         <!-- Main Content -->
         <main class="flex-1 ml-64">
             <header class="bg-white border-b border-gray-200 sticky top-0 z-30">
@@ -102,29 +132,39 @@
                     </div>
                 </div>
             </header>
-            
+
             <div class="p-6">
                 <!-- Card Table Jenis Sertifikat -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="p-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div
+                        class="p-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
                             <h3 class="text-lg font-semibold text-gray-800">Daftar Jenis Sertifikat</h3>
                             <p class="text-sm text-gray-500 mt-1">Kelola semua jenis sertifikat yang tersedia</p>
                         </div>
-                        <button class="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-simawa-500 to-simawa-700 text-white text-sm font-medium rounded-lg hover:from-simawa-600 hover:to-simawa-800 transition-all shadow-sm">
+                        <button
+                            class="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-simawa-500 to-simawa-700 text-white text-sm font-medium rounded-lg hover:from-simawa-600 hover:to-simawa-800 transition-all shadow-sm">
                             <ion-icon name="add-circle-outline" class="text-lg"></ion-icon>
                             Tambah Jenis Sertifikat
                         </button>
                     </div>
-                    
+
                     <div class="overflow-x-auto">
                         <table class="w-full">
-                            <thead class="bg-gray-50 border-b border-gray-100">
+                            <thead class="bg-[#1B4986]">
                                 <tr>
-                                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-16">No</th>
-                                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Jenis Sertifikat</th>
-                                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Keterangan</th>
-                                    <th class="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider w-32">Aksi</th>
+                                    <th
+                                        class="px-6 py-6 text-left text-xs font-semibold text-white uppercase tracking-wider w-16">
+                                        No</th>
+                                    <th
+                                        class="px-6 py-6 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                                        Jenis Sertifikat</th>
+                                    <th
+                                        class="px-6 py-6 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                                        Keterangan</th>
+                                    <th
+                                        class="px-6 py-6 text-center text-xs font-semibold text-white uppercase tracking-wider w-32">
+                                        Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-100">
@@ -133,13 +173,18 @@
                                     <td class="px-6 py-4">
                                         <span class="text-sm font-medium text-gray-800">Sertifikat Kompetensi</span>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-600">Sertifikat yang diberikan untuk keahlian atau keterampilan khusus</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Sertifikat yang diberikan untuk keahlian
+                                        atau keterampilan khusus</td>
                                     <td class="px-6 py-4">
                                         <div class="flex items-center justify-center gap-2">
-                                            <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Edit">
+                                            <button
+                                                class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                                                title="Edit">
                                                 <ion-icon name="create-outline" class="text-lg"></ion-icon>
                                             </button>
-                                            <button class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Hapus">
+                                            <button
+                                                class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                                                title="Hapus">
                                                 <ion-icon name="trash-outline" class="text-lg"></ion-icon>
                                             </button>
                                         </div>
@@ -148,15 +193,21 @@
                                 <tr class="hover:bg-gray-50/50 transition-colors">
                                     <td class="px-6 py-4 text-sm text-gray-600 font-medium">2</td>
                                     <td class="px-6 py-4">
-                                        <span class="text-sm font-medium text-gray-800">Sertifikat Bahasa Internasional</span>
+                                        <span class="text-sm font-medium text-gray-800">Sertifikat Bahasa
+                                            Internasional</span>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-600">Sertifikat kemampuan bahasa asing seperti TOEFL, IELTS, TOPIK, dll</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Sertifikat kemampuan bahasa asing
+                                        seperti TOEFL, IELTS, TOPIK, dll</td>
                                     <td class="px-6 py-4">
                                         <div class="flex items-center justify-center gap-2">
-                                            <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Edit">
+                                            <button
+                                                class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                                                title="Edit">
                                                 <ion-icon name="create-outline" class="text-lg"></ion-icon>
                                             </button>
-                                            <button class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Hapus">
+                                            <button
+                                                class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                                                title="Hapus">
                                                 <ion-icon name="trash-outline" class="text-lg"></ion-icon>
                                             </button>
                                         </div>
@@ -167,13 +218,18 @@
                                     <td class="px-6 py-4">
                                         <span class="text-sm font-medium text-gray-800">Sertifikat Magang</span>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-600">Sertifikat pengalaman magang di perusahaan atau instansi</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Sertifikat pengalaman magang di
+                                        perusahaan atau instansi</td>
                                     <td class="px-6 py-4">
                                         <div class="flex items-center justify-center gap-2">
-                                            <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Edit">
+                                            <button
+                                                class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                                                title="Edit">
                                                 <ion-icon name="create-outline" class="text-lg"></ion-icon>
                                             </button>
-                                            <button class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Hapus">
+                                            <button
+                                                class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                                                title="Hapus">
                                                 <ion-icon name="trash-outline" class="text-lg"></ion-icon>
                                             </button>
                                         </div>
@@ -182,15 +238,21 @@
                                 <tr class="hover:bg-gray-50/50 transition-colors">
                                     <td class="px-6 py-4 text-sm text-gray-600 font-medium">4</td>
                                     <td class="px-6 py-4">
-                                        <span class="text-sm font-medium text-gray-800">Sertifikat Pendidikan Karakter</span>
+                                        <span class="text-sm font-medium text-gray-800">Sertifikat Pendidikan
+                                            Karakter</span>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-600">Sertifikat kegiatan pembinaan karakter dan kepribadian</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Sertifikat kegiatan pembinaan karakter
+                                        dan kepribadian</td>
                                     <td class="px-6 py-4">
                                         <div class="flex items-center justify-center gap-2">
-                                            <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Edit">
+                                            <button
+                                                class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                                                title="Edit">
                                                 <ion-icon name="create-outline" class="text-lg"></ion-icon>
                                             </button>
-                                            <button class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Hapus">
+                                            <button
+                                                class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                                                title="Hapus">
                                                 <ion-icon name="trash-outline" class="text-lg"></ion-icon>
                                             </button>
                                         </div>
@@ -201,13 +263,18 @@
                                     <td class="px-6 py-4">
                                         <span class="text-sm font-medium text-gray-800">Sertifikat Penghargaan</span>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-600">Sertifikat penghargaan atas prestasi atau kontribusi tertentu</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Sertifikat penghargaan atas prestasi
+                                        atau kontribusi tertentu</td>
                                     <td class="px-6 py-4">
                                         <div class="flex items-center justify-center gap-2">
-                                            <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Edit">
+                                            <button
+                                                class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                                                title="Edit">
                                                 <ion-icon name="create-outline" class="text-lg"></ion-icon>
                                             </button>
-                                            <button class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Hapus">
+                                            <button
+                                                class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                                                title="Hapus">
                                                 <ion-icon name="trash-outline" class="text-lg"></ion-icon>
                                             </button>
                                         </div>
@@ -218,13 +285,18 @@
                                     <td class="px-6 py-4">
                                         <span class="text-sm font-medium text-gray-800">Sertifikat Organisasi</span>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-600">Sertifikat keaktifan dalam organisasi kemahasiswaan</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Sertifikat keaktifan dalam organisasi
+                                        kemahasiswaan</td>
                                     <td class="px-6 py-4">
                                         <div class="flex items-center justify-center gap-2">
-                                            <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Edit">
+                                            <button
+                                                class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                                                title="Edit">
                                                 <ion-icon name="create-outline" class="text-lg"></ion-icon>
                                             </button>
-                                            <button class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Hapus">
+                                            <button
+                                                class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                                                title="Hapus">
                                                 <ion-icon name="trash-outline" class="text-lg"></ion-icon>
                                             </button>
                                         </div>
@@ -233,16 +305,22 @@
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <!-- Pagination -->
-                    <div class="p-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <p class="text-sm text-gray-600">Menampilkan <span class="font-medium">1-6</span> dari <span class="font-medium">6</span> data</p>
+                    <div
+                        class="p-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <p class="text-sm text-gray-600">Menampilkan <span class="font-medium">1-6</span> dari <span
+                                class="font-medium">6</span> data</p>
                         <div class="flex items-center gap-1">
-                            <button class="px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100 rounded-lg transition-colors disabled:opacity-50" disabled>
+                            <button
+                                class="px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100 rounded-lg transition-colors disabled:opacity-50"
+                                disabled>
                                 <ion-icon name="chevron-back-outline"></ion-icon>
                             </button>
                             <button class="px-3 py-1.5 text-sm bg-simawa-500 text-white rounded-lg">1</button>
-                            <button class="px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100 rounded-lg transition-colors disabled:opacity-50" disabled>
+                            <button
+                                class="px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100 rounded-lg transition-colors disabled:opacity-50"
+                                disabled>
                                 <ion-icon name="chevron-forward-outline"></ion-icon>
                             </button>
                         </div>
@@ -256,7 +334,8 @@
     <div id="modalForm" class="fixed inset-0 z-50 hidden">
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeModal()"></div>
         <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md relative z-10 transform transition-all scale-95 opacity-0" id="modalContent">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md relative z-10 transform transition-all scale-95 opacity-0"
+                id="modalContent">
                 <div class="p-6 border-b border-gray-100">
                     <div class="flex items-center justify-between">
                         <h3 id="modalTitle" class="text-lg font-semibold text-gray-800">Tambah Jenis Sertifikat</h3>
@@ -269,7 +348,8 @@
                     <div class="p-6 space-y-4">
                         <input type="hidden" id="editId" value="">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Jenis Sertifikat <span class="text-red-500">*</span></label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Jenis Sertifikat <span
+                                    class="text-red-500">*</span></label>
                             <input type="text" id="inputJenis" required
                                 class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-simawa-500/20 focus:border-simawa-500 transition-all outline-none"
                                 placeholder="Masukkan jenis sertifikat">
@@ -282,10 +362,12 @@
                         </div>
                     </div>
                     <div class="p-6 border-t border-gray-100 flex gap-3 justify-end">
-                        <button type="button" onclick="closeModal()" class="px-4 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                        <button type="button" onclick="closeModal()"
+                            class="px-4 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
                             Batal
                         </button>
-                        <button type="submit" class="px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-simawa-500 to-simawa-700 hover:from-simawa-600 hover:to-simawa-800 rounded-lg transition-all shadow-sm">
+                        <button type="submit"
+                            class="px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-simawa-500 to-simawa-700 hover:from-simawa-600 hover:to-simawa-800 rounded-lg transition-all shadow-sm">
                             Simpan
                         </button>
                     </div>
@@ -298,19 +380,23 @@
     <div id="modalDelete" class="fixed inset-0 z-50 hidden">
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeDeleteModal()"></div>
         <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm relative z-10 transform transition-all scale-95 opacity-0" id="deleteModalContent">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm relative z-10 transform transition-all scale-95 opacity-0"
+                id="deleteModalContent">
                 <div class="p-6 text-center">
                     <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <ion-icon name="warning-outline" class="text-3xl text-red-600"></ion-icon>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Hapus Data?</h3>
-                    <p class="text-sm text-gray-600 mb-6">Apakah Anda yakin ingin menghapus <span id="deleteItemName" class="font-medium text-gray-800"></span>? Tindakan ini tidak dapat dibatalkan.</p>
+                    <p class="text-sm text-gray-600 mb-6">Apakah Anda yakin ingin menghapus <span id="deleteItemName"
+                            class="font-medium text-gray-800"></span>? Tindakan ini tidak dapat dibatalkan.</p>
                     <input type="hidden" id="deleteId" value="">
                     <div class="flex gap-3 justify-center">
-                        <button onclick="closeDeleteModal()" class="px-4 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                        <button onclick="closeDeleteModal()"
+                            class="px-4 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
                             Batal
                         </button>
-                        <button onclick="confirmDelete()" class="px-4 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
+                        <button onclick="confirmDelete()"
+                            class="px-4 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
                             Ya, Hapus
                         </button>
                     </div>
@@ -342,7 +428,7 @@
         function renderTable() {
             const tbody = document.querySelector('tbody');
             tbody.innerHTML = '';
-            
+
             dataSertifikat.forEach((item, index) => {
                 const tr = document.createElement('tr');
                 tr.className = 'hover:bg-gray-50/50 transition-colors';
@@ -354,10 +440,10 @@
                     <td class="px-6 py-4 text-sm text-gray-600">${item.keterangan || '-'}</td>
                     <td class="px-6 py-4">
                         <div class="flex items-center justify-center gap-2">
-                            <button onclick="editData(${item.id})" class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Edit">
+                            <button onclick="editData(${item.id})" class="flex h-9 w-9 items-center justify-center text-white bg-[#18437E] rounded-lg transition-colors" title="Edit">
                                 <ion-icon name="create-outline" class="text-lg"></ion-icon>
                             </button>
-                            <button onclick="deleteData(${item.id})" class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Hapus">
+                            <button onclick="deleteData(${item.id})" class="flex h-9 w-9 items-center justify-center text-white bg-red-500 rounded-lg transition-colors" title="Hapus">
                                 <ion-icon name="trash-outline" class="text-lg"></ion-icon>
                             </button>
                         </div>
@@ -376,7 +462,7 @@
             document.getElementById('editId').value = '';
             document.getElementById('inputJenis').value = '';
             document.getElementById('inputKeterangan').value = '';
-            
+
             const modal = document.getElementById('modalForm');
             const content = document.getElementById('modalContent');
             modal.classList.remove('hidden');
@@ -404,7 +490,7 @@
                 document.getElementById('editId').value = id;
                 document.getElementById('inputJenis').value = item.jenis;
                 document.getElementById('inputKeterangan').value = item.keterangan || '';
-                
+
                 const modal = document.getElementById('modalForm');
                 const content = document.getElementById('modalContent');
                 modal.classList.remove('hidden');
@@ -418,7 +504,7 @@
         // Save Data
         function saveData(event) {
             event.preventDefault();
-            
+
             const editId = document.getElementById('editId').value;
             const jenis = document.getElementById('inputJenis').value.trim();
             const keterangan = document.getElementById('inputKeterangan').value.trim();
@@ -448,7 +534,7 @@
             if (item) {
                 document.getElementById('deleteId').value = id;
                 document.getElementById('deleteItemName').textContent = item.jenis;
-                
+
                 const modal = document.getElementById('modalDelete');
                 const content = document.getElementById('deleteModalContent');
                 modal.classList.remove('hidden');
@@ -485,7 +571,7 @@
             const toastMessage = document.getElementById('toastMessage');
 
             toastMessage.textContent = message;
-            
+
             if (type === 'success') {
                 toastIcon.className = 'w-8 h-8 rounded-full flex items-center justify-center bg-green-100';
                 toastIcon.innerHTML = '<ion-icon name="checkmark-outline" class="text-lg text-green-600"></ion-icon>';
@@ -504,16 +590,17 @@
         }
 
         // Initialize - Connect button Tambah
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Attach onclick to Tambah button
             const tambahBtn = document.querySelector('button.inline-flex');
             if (tambahBtn) {
                 tambahBtn.onclick = openModal;
             }
-            
+
             // Initial render
             renderTable();
         });
     </script>
 </body>
+
 </html>

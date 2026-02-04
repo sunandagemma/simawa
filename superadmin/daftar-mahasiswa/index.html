@@ -160,28 +160,28 @@
                 </div>
 
                 <!-- Table Card -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="bg-white rounded-md shadow-sm border border-gray-100 overflow-hidden">
                     <div class="overflow-x-auto">
                         <table class="w-full">
-                            <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
+                            <thead class="bg-[#1B4986]">
                                 <tr>
                                     <th
-                                        class="text-left px-6 py-4 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="text-left px-6 py-6 text-xs font-semibold text-white uppercase tracking-wider">
                                         No</th>
                                     <th
-                                        class="text-left px-6 py-4 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="text-left px-6 py-6 text-xs font-semibold text-white uppercase tracking-wider">
                                         NIM</th>
                                     <th
-                                        class="text-left px-6 py-4 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="text-left px-6 py-6 text-xs font-semibold text-white uppercase tracking-wider">
                                         Nama Mahasiswa</th>
                                     <th
-                                        class="text-left px-6 py-4 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="text-left px-6 py-6 text-xs font-semibold text-white uppercase tracking-wider">
                                         Program Studi</th>
                                     <th
-                                        class="text-center px-6 py-4 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="text-center px-6 py-6 text-xs font-semibold text-white uppercase tracking-wider">
                                         Jumlah Sertifikat</th>
                                     <th
-                                        class="text-center px-6 py-4 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="text-center px-6 py-6 text-xs font-semibold text-white uppercase tracking-wider">
                                         Aksi</th>
                                 </tr>
                             </thead>
@@ -517,7 +517,6 @@
                     <td class="px-6 py-4 text-sm font-medium text-gray-800">${m.nim}</td>
                     <td class="px-6 py-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-${m.color}-400 to-${m.color}-600 flex items-center justify-center text-white font-semibold text-sm">${getInitials(m.nama)}</div>
                             <span class="text-sm font-medium text-gray-800">${m.nama}</span>
                         </div>
                     </td>
@@ -529,13 +528,13 @@
                     </td>
                     <td class="px-6 py-4">
                         <div class="flex items-center justify-center gap-1">
-                            <a href="./detail/?id=${m.id}" class="p-2 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors" title="Lihat Detail">
+                            <a href="./detail/?id=${m.id}" class="flex h-9 w-9 items-center justify-center text-white bg-[#0A853A] rounded-lg transition-colors" title="Lihat Detail">
                                 <ion-icon name="eye-outline" class="text-lg"></ion-icon>
                             </a>
-                            <button onclick="openEditModal(${m.id})" class="p-2 text-amber-500 hover:bg-amber-50 rounded-lg transition-colors" title="Ubah">
+                            <button onclick="openEditModal(${m.id})" class="flex h-9 w-9 items-center justify-center text-white bg-[#18437E] rounded-lg transition-colors" title="Ubah">
                                 <ion-icon name="create-outline" class="text-lg"></ion-icon>
                             </button>
-                            <button onclick="openDeleteModal(${m.id})" class="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Hapus">
+                            <button onclick="openDeleteModal(${m.id})" class="flex h-9 w-9 items-center justify-center text-white bg-red-500 rounded-lg transition-colors" title="Hapus">
                                 <ion-icon name="trash-outline" class="text-lg"></ion-icon>
                             </button>
                         </div>
