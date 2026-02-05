@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Superadmin | SIMAWA</title>
+    
+    <link rel="icon" type="image/png" href="/image/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'simawa': {
+                            '50': '#BDE8F5', '100': '#9DD9EF', '200': '#7DCAE9',
+                            '300': '#4988C4', '400': '#3A7AB8', '500': '#1C4D8D',
+                            '600': '#184480', '700': '#143B73', '800': '#0F2854', '900': '#0A1F45',
+                        },
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-inter">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="sidebar w-64 bg-gradient-to-b from-[#1C4D8D] to-[#0F2854] text-white fixed h-full z-40">
+            <div class="p-6 border-b border-white/10">
+                <div class="flex items-center gap-3 w-full">
+                    <img src="/image/logo.png" alt="Logo" class="h-16 object-contain bg-white/10 rounded-lg p-2 w-full">
+                </div>
+            </div>
+            
+            <nav class="p-4">
+                <ul class="space-y-1">
+                    <li><a href="/superadmin/dashboard/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="grid" class="text-xl"></ion-icon>Dashboard</a></li>
+                </ul>
+                
+                <p class="text-xs text-white/50 uppercase tracking-wider mb-3 px-3 mt-6">Menu</p>
+                <ul class="space-y-1">
+                    <li class="submenu-parent">
+                        <button onclick="this.parentElement.classList.toggle('open')" class="sidebar-menu-item flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm">
+                            <span class="flex items-center gap-3"><ion-icon name="cloud-done-outline" class="text-xl"></ion-icon>SIMKATMAWA</span>
+                            <ion-icon name="chevron-down-outline" class="text-sm submenu-arrow transition-transform"></ion-icon>
+                        </button>
+                        <ul class="submenu pl-8 space-y-1 mt-1 hidden">
+                            <li><a href="/superadmin/kategori-prestasi/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="medal-outline" class="text-lg"></ion-icon>Kategori Prestasi</a></li>
+                            <li><a href="/superadmin/formulir-prestasi/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="reader-outline" class="text-lg"></ion-icon>Formulir Prestasi</a></li>
+                            <li><a href="/superadmin/daftar-prestasi/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="school-outline" class="text-lg"></ion-icon>Daftar Prestasi</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu-parent open">
+                        <button onclick="this.parentElement.classList.toggle('open')" class="sidebar-menu-item flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm">
+                            <span class="flex items-center gap-3"><ion-icon name="podium-outline" class="text-xl"></ion-icon>Internal Universitas</span>
+                            <ion-icon name="chevron-down-outline" class="text-sm submenu-arrow transition-transform"></ion-icon>
+                        </button>
+                        <ul class="submenu pl-8 space-y-1 mt-1">
+                            <li><a href="/superadmin/jenis-sertifikat/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="library-outline" class="text-lg"></ion-icon>Jenis Sertifikat</a></li>
+                            <li><a href="/superadmin/daftar-mahasiswa/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="person-circle-outline" class="text-lg"></ion-icon>Daftar Mahasiswa</a></li>
+                            <li><a href="/superadmin/kegiatan/" class="sidebar-menu-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="pricetags-outline" class="text-lg"></ion-icon>Kegiatan</a></li>
+                        </ul>
+                    </li>
+                    
+                    <p class="text-xs text-white/50 uppercase tracking-wider mb-3 px-3 mt-6">User</p>
+                    <li><a href="/superadmin/kegiatan-mahasiswa/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="people-outline" class="text-xl"></ion-icon>Kelola Users</a></li>
+                    <li><a href="/superadmin/log-aktivitas/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="shield-checkmark-outline" class="text-xl"></ion-icon>Log Aktivitas</a></li>
+                </ul>
+            </nav>
+            <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
+                <a href="/" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm hover:bg-white/10 transition-colors"><ion-icon name="log-out" class="text-xl"></ion-icon>Keluar</a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex-1 ml-64">
+            <header class="bg-white border-b border-gray-200 sticky top-0 z-30">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800">Kegiatan</h2>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-3 pl-4 border-l border-gray-200">
+                            <div class="w-10 h-10 rounded-full bg-[#BDE8F5] flex items-center justify-center">
+                                <ion-icon name="shield-checkmark" class="text-[#0F2854] text-xl"></ion-icon>
+                            </div>
+                            <div class="hidden sm:block">
+                                <p class="text-sm font-semibold text-gray-800">Superadmin</p>
+                                <p class="text-xs text-gray-500">admin@unwahas.ac.id</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="p-6">
+                <!-- Header Section -->
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Rundown Kegiatan</h3>
+                        <p class="text-sm text-gray-500">Kelola rundown acara kegiatan universitas</p>
+                    </div>
+                    <button onclick="openTambahRundown()" class="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-simawa-500 to-simawa-600 text-white rounded-xl text-sm font-medium hover:from-simawa-600 hover:to-simawa-700 transition-all shadow-lg shadow-simawa-500/25">
+                        <ion-icon name="add-outline" class="text-lg"></ion-icon>
+                        Tambah Rundown
+                    </button>
+                </div>
+
+                <!-- Info Kegiatan -->
+                <div class="bg-gradient-to-r from-simawa-500 to-simawa-700 rounded-xl p-5 mb-6 text-white">
+                    <div class="flex items-start gap-4">
+                        <div>
+                            <h4 class="text-lg font-bold mb-1">Orientasi Keaswajaan 2025</h4>
+                            <p class="text-sm text-white/80 mb-2">Orientasi Keaswajaan bagi Mahasiswa Baru Tahun Akademik 2025/2026</p>
+                            <div class="flex items-center gap-4 text-xs text-white/70">
+                                <span class="flex items-center gap-1"><ion-icon name="time-outline"></ion-icon> 01 Agu 2025 - 16 Sep 2025</span>
+                                <span class="flex items-center gap-1"><ion-icon name="list-outline"></ion-icon> <span id="totalRundown">5</span> Rundown</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="bg-white rounded-md shadow-sm border border-gray-100">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gradient-to-r from-simawa-800 to-simawa-900 text-white">
+                                <tr>
+                                    <th class="text-left px-4 py-4 text-xs font-semibold uppercase tracking-wider w-16">No</th>
+                                    <th class="text-left px-4 py-4 text-xs font-semibold uppercase tracking-wider">Nama Rundown Acara</th>
+                                    <th class="text-left px-4 py-4 text-xs font-semibold uppercase tracking-wider">Waktu Mulai</th>
+                                    <th class="text-left px-4 py-4 text-xs font-semibold uppercase tracking-wider">Waktu Selesai</th>
+                                    <th class="text-center px-4 py-4 text-xs font-semibold uppercase tracking-wider w-32">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableRundown" class="divide-y divide-gray-100">
+                                <!-- Data akan di-render oleh JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Pagination -->
+                    <div class="flex items-center justify-between px-6 py-4 border-t border-gray-100">
+                        <p class="text-sm text-gray-500">Menampilkan <span class="font-medium" id="showingFrom">1</span>-<span class="font-medium" id="showingTo">5</span> dari <span class="font-medium" id="totalData">5</span> data</p>
+                        <div class="flex items-center gap-2">
+                            <button class="px-3 py-1.5 border border-gray-200 rounded-lg text-sm text-gray-500 hover:bg-gray-50 disabled:opacity-50" disabled>
+                                <ion-icon name="chevron-back-outline"></ion-icon>
+                            </button>
+                            <button class="px-3 py-1.5 bg-simawa-500 text-white rounded-lg text-sm font-medium">1</button>
+                            <button class="px-3 py-1.5 border border-gray-200 rounded-lg text-sm text-gray-500 hover:bg-gray-50 disabled:opacity-50" disabled>
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Tambah/Edit Rundown -->
+                <div id="modalRundown" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center">
+                    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 transform transition-all">
+                        <div class="flex items-center justify-between p-4 border-b border-gray-100">
+                            <h3 id="modalRundownTitle" class="text-lg font-bold text-gray-800">Tambah Rundown</h3>
+                            <button onclick="closeModalRundown()" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                                <ion-icon name="close-outline" class="text-xl text-gray-500"></ion-icon>
+                            </button>
+                        </div>
+                        <form id="formRundown" onsubmit="saveRundown(event)" class="p-6 space-y-4">
+                            <input type="hidden" id="rundownId">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1.5">Nama Rundown Acara <span class="text-red-500">*</span></label>
+                                <input type="text" id="namaRundown" required placeholder="Masukkan nama rundown acara" class="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-simawa-500/20 focus:border-simawa-500">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">Waktu Mulai <span class="text-red-500">*</span></label>
+                                    <input type="datetime-local" id="waktuMulai" required class="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-simawa-500/20 focus:border-simawa-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">Waktu Selesai <span class="text-red-500">*</span></label>
+                                    <input type="datetime-local" id="waktuSelesai" required class="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-simawa-500/20 focus:border-simawa-500">
+                                </div>
+                            </div>
+                            <div class="flex gap-3 pt-4">
+                                <button type="button" onclick="closeModalRundown()" class="flex-1 px-4 py-2.5 border border-gray-200 text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-50 transition-colors">Batal</button>
+                                <button type="submit" class="flex-1 px-4 py-2.5 bg-gradient-to-r from-simawa-500 to-simawa-600 text-white rounded-xl text-sm font-medium hover:from-simawa-600 hover:to-simawa-700 transition-all flex items-center justify-center gap-2">
+                                    <ion-icon name="checkmark-outline"></ion-icon>
+                                    Simpan
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal Konfirmasi Hapus -->
+                <div id="modalHapus" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center">
+                    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4">
+                        <div class="p-6 text-center">
+                            <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
+                                <ion-icon name="trash-outline" class="text-3xl text-red-500"></ion-icon>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">Hapus Rundown?</h3>
+                            <p class="text-sm text-gray-500 mb-6">Anda yakin ingin menghapus rundown ini? Tindakan ini tidak dapat dibatalkan.</p>
+                            <div class="flex gap-3">
+                                <button onclick="closeModalHapus()" class="flex-1 px-4 py-2.5 border border-gray-200 text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-50 transition-colors">Batal</button>
+                                <button onclick="confirmHapus()" class="flex-1 px-4 py-2.5 bg-red-500 text-white rounded-xl text-sm font-medium hover:bg-red-600 transition-colors">Hapus</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Data Rundown Kegiatan
+        let rundownData = [
+            {
+                id: 1,
+                nama: 'Pembukaan dan Sambutan',
+                waktuMulai: '2025-08-01 08:00',
+                waktuSelesai: '2025-08-01 08:30'
+            },
+            {
+                id: 2,
+                nama: 'Pengenalan Kampus dan Fasilitas',
+                waktuMulai: '2025-08-01 08:30',
+                waktuSelesai: '2025-08-01 10:00'
+            },
+            {
+                id: 3,
+                nama: 'Materi Keaswajaan dan Nilai-Nilai Islam',
+                waktuMulai: '2025-08-01 10:00',
+                waktuSelesai: '2025-08-01 12:00'
+            },
+            {
+                id: 4,
+                nama: 'Istirahat dan Sholat',
+                waktuMulai: '2025-08-01 12:00',
+                waktuSelesai: '2025-08-01 13:00'
+            },
+            {
+                id: 5,
+                nama: 'Diskusi Kelompok dan Games',
+                waktuMulai: '2025-08-01 13:00',
+                waktuSelesai: '2025-08-01 15:00'
+            }
+        ];
+
+        let deleteId = null;
+        let nextId = 6;
+
+        // Format datetime for display
+        function formatDateTime(datetime) {
+            const date = new Date(datetime.replace(' ', 'T'));
+            const options = { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+            return date.toLocaleDateString('id-ID', options);
+        }
+
+        // Render table
+        function renderRundown() {
+            const tbody = document.getElementById('tableRundown');
+            tbody.innerHTML = rundownData.map((r, i) => `
+                <tr class="hover:bg-gray-50/50 transition-colors">
+                    <td class="px-4 py-4 text-sm text-gray-600">${i + 1}</td>
+                    <td class="px-4 py-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-simawa-100 to-simawa-200 flex items-center justify-center flex-shrink-0">
+                                <ion-icon name="list-outline" class="text-simawa-600 text-lg"></ion-icon>
+                            </div>
+                            <span class="text-sm font-medium text-gray-800">${r.nama}</span>
+                        </div>
+                    </td>
+                    <td class="px-4 py-4 text-sm text-gray-600 whitespace-nowrap">${formatDateTime(r.waktuMulai)}</td>
+                    <td class="px-4 py-4 text-sm text-gray-600 whitespace-nowrap">${formatDateTime(r.waktuSelesai)}</td>
+                    <td class="px-4 py-4">
+                        <div class="flex items-center justify-center gap-1">
+                            <button onclick="openEditRundown(${r.id})" class="p-2 text-amber-500 hover:bg-amber-50 rounded-lg transition-colors" title="Ubah">
+                                <ion-icon name="create-outline" class="text-lg"></ion-icon>
+                            </button>
+                            <button onclick="openModalHapus(${r.id})" class="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Hapus">
+                                <ion-icon name="trash-outline" class="text-lg"></ion-icon>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+
+            // Update pagination info
+            document.getElementById('showingFrom').textContent = rundownData.length > 0 ? '1' : '0';
+            document.getElementById('showingTo').textContent = rundownData.length;
+            document.getElementById('totalData').textContent = rundownData.length;
+            document.getElementById('totalRundown').textContent = rundownData.length;
+        }
+
+        // Modal Tambah Rundown
+        function openTambahRundown() {
+            document.getElementById('modalRundownTitle').textContent = 'Tambah Rundown';
+            document.getElementById('formRundown').reset();
+            document.getElementById('rundownId').value = '';
+            document.getElementById('modalRundown').classList.remove('hidden');
+            document.getElementById('modalRundown').classList.add('flex');
+        }
+
+        // Modal Edit Rundown
+        function openEditRundown(id) {
+            const rundown = rundownData.find(r => r.id === id);
+            if (rundown) {
+                document.getElementById('modalRundownTitle').textContent = 'Edit Rundown';
+                document.getElementById('rundownId').value = rundown.id;
+                document.getElementById('namaRundown').value = rundown.nama;
+                document.getElementById('waktuMulai').value = rundown.waktuMulai.replace(' ', 'T');
+                document.getElementById('waktuSelesai').value = rundown.waktuSelesai.replace(' ', 'T');
+                document.getElementById('modalRundown').classList.remove('hidden');
+                document.getElementById('modalRundown').classList.add('flex');
+            }
+        }
+
+        function closeModalRundown() {
+            document.getElementById('modalRundown').classList.add('hidden');
+            document.getElementById('modalRundown').classList.remove('flex');
+        }
+
+        function saveRundown(event) {
+            event.preventDefault();
+            const id = document.getElementById('rundownId').value;
+            const nama = document.getElementById('namaRundown').value;
+            const waktuMulai = document.getElementById('waktuMulai').value.replace('T', ' ');
+            const waktuSelesai = document.getElementById('waktuSelesai').value.replace('T', ' ');
+
+            if (id) {
+                // Edit existing
+                const index = rundownData.findIndex(r => r.id === parseInt(id));
+                if (index !== -1) {
+                    rundownData[index] = { ...rundownData[index], nama, waktuMulai, waktuSelesai };
+                    showNotification('Rundown berhasil diperbarui!', 'success');
+                }
+            } else {
+                // Add new
+                rundownData.push({ id: nextId++, nama, waktuMulai, waktuSelesai });
+                showNotification('Rundown berhasil ditambahkan!', 'success');
+            }
+
+            renderRundown();
+            closeModalRundown();
+        }
+
+        // Modal Hapus
+        function openModalHapus(id) {
+            deleteId = id;
+            document.getElementById('modalHapus').classList.remove('hidden');
+            document.getElementById('modalHapus').classList.add('flex');
+        }
+
+        function closeModalHapus() {
+            document.getElementById('modalHapus').classList.add('hidden');
+            document.getElementById('modalHapus').classList.remove('flex');
+            deleteId = null;
+        }
+
+        function confirmHapus() {
+            if (deleteId) {
+                const index = rundownData.findIndex(r => r.id === deleteId);
+                if (index !== -1) {
+                    rundownData.splice(index, 1);
+                    renderRundown();
+                    showNotification('Rundown berhasil dihapus!', 'success');
+                }
+            }
+            closeModalHapus();
+        }
+
+        // Close modals on backdrop click
+        ['modalRundown', 'modalHapus'].forEach(id => {
+            document.getElementById(id).addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.add('hidden');
+                    this.classList.remove('flex');
+                }
+            });
+        });
+
+        // Notification
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `fixed bottom-4 right-4 px-6 py-3 rounded-xl shadow-lg text-white text-sm font-medium flex items-center gap-2 z-50 ${type === 'success' ? 'bg-emerald-500' : 'bg-red-500'}`;
+            notification.innerHTML = `<ion-icon name="${type === 'success' ? 'checkmark-circle' : 'alert-circle'}" class="text-lg"></ion-icon>${message}`;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Initial render
+        renderRundown();
+    </script>
+</body>
+</html>

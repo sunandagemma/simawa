@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Superadmin | SIMAWA</title>
+    
+    <link rel="icon" type="image/png" href="/image/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'simawa': {
+                            '50': '#BDE8F5', '100': '#9DD9EF', '200': '#7DCAE9',
+                            '300': '#4988C4', '400': '#3A7AB8', '500': '#1C4D8D',
+                            '600': '#184480', '700': '#143B73', '800': '#0F2854', '900': '#0A1F45',
+                        },
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-inter">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="sidebar w-64 bg-gradient-to-b from-[#1C4D8D] to-[#0F2854] text-white fixed h-full z-40">
+            <div class="p-6 border-b border-white/10">
+                <div class="flex items-center gap-3 w-full">
+                    <img src="/image/logo.png" alt="Logo" class="h-16 object-contain bg-white/10 rounded-lg p-2 w-full">
+                </div>
+            </div>
+            
+            <nav class="p-4">
+                <ul class="space-y-1">
+                    <li><a href="/superadmin/dashboard/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="grid" class="text-xl"></ion-icon>Dashboard</a></li>
+                </ul>
+                
+                <p class="text-xs text-white/50 uppercase tracking-wider mb-3 px-3 mt-6">Menu</p>
+                <ul class="space-y-1">
+                    <li class="submenu-parent">
+                        <button onclick="this.parentElement.classList.toggle('open')" class="sidebar-menu-item flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm">
+                            <span class="flex items-center gap-3"><ion-icon name="cloud-done-outline" class="text-xl"></ion-icon>SIMKATMAWA</span>
+                            <ion-icon name="chevron-down-outline" class="text-sm submenu-arrow transition-transform"></ion-icon>
+                        </button>
+                        <ul class="submenu pl-8 space-y-1 mt-1 hidden">
+                            <li><a href="/superadmin/kategori-prestasi/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="medal-outline" class="text-lg"></ion-icon>Kategori Prestasi</a></li>
+                            <li><a href="/superadmin/formulir-prestasi/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="reader-outline" class="text-lg"></ion-icon>Formulir Prestasi</a></li>
+                            <li><a href="/superadmin/daftar-prestasi/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="school-outline" class="text-lg"></ion-icon>Daftar Prestasi</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu-parent open">
+                        <button onclick="this.parentElement.classList.toggle('open')" class="sidebar-menu-item flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm">
+                            <span class="flex items-center gap-3"><ion-icon name="podium-outline" class="text-xl"></ion-icon>Internal Universitas</span>
+                            <ion-icon name="chevron-down-outline" class="text-sm submenu-arrow transition-transform"></ion-icon>
+                        </button>
+                        <ul class="submenu pl-8 space-y-1 mt-1">
+                            <li><a href="/superadmin/jenis-sertifikat/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="library-outline" class="text-lg"></ion-icon>Jenis Sertifikat</a></li>
+                            <li><a href="/superadmin/daftar-mahasiswa/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm"><ion-icon name="person-circle-outline" class="text-lg"></ion-icon>Daftar Mahasiswa</a></li>
+                            <li><a href="/superadmin/kegiatan/" class="sidebar-menu-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="pricetags-outline" class="text-lg"></ion-icon>Kegiatan</a></li>
+                        </ul>
+                    </li>
+                    
+                    <p class="text-xs text-white/50 uppercase tracking-wider mb-3 px-3 mt-6">User</p>
+                    <li><a href="/superadmin/kegiatan-mahasiswa/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="people-outline" class="text-xl"></ion-icon>Kelola Users</a></li>
+                    <li><a href="/superadmin/log-aktivitas/" class="sidebar-menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm"><ion-icon name="shield-checkmark-outline" class="text-xl"></ion-icon>Log Aktivitas</a></li>
+                </ul>
+            </nav>
+            <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
+                <a href="/" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm hover:bg-white/10 transition-colors"><ion-icon name="log-out" class="text-xl"></ion-icon>Keluar</a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex-1 ml-64">
+            <header class="bg-white border-b border-gray-200 sticky top-0 z-30">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800">Kegiatan</h2>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-3 pl-4 border-l border-gray-200">
+                            <div class="w-10 h-10 rounded-full bg-[#BDE8F5] flex items-center justify-center">
+                                <ion-icon name="shield-checkmark" class="text-[#0F2854] text-xl"></ion-icon>
+                            </div>
+                            <div class="hidden sm:block">
+                                <p class="text-sm font-semibold text-gray-800">Superadmin</p>
+                                <p class="text-xs text-gray-500">admin@unwahas.ac.id</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="p-6">
+                <!-- Header Section -->
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Daftar Peserta Kegiatan</h3>
+                        <p class="text-sm text-gray-500">Kelola semua peserta kegiatan universitas</p>
+                    </div>
+                </div>
+
+                <!-- Info Kegiatan -->
+                <div class="bg-gradient-to-r from-simawa-500 to-simawa-700 rounded-xl p-5 mb-6 text-white">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <ion-icon name="calendar-outline" class="text-2xl"></ion-icon>
+                        </div>
+                        <div>
+                            <h4 id="namaKegiatan" class="text-lg font-bold mb-1">Orientasi Keaswajaan 2025</h4>
+                            <p class="text-sm text-white/80 mb-2">Orientasi Keaswajaan bagi Mahasiswa Baru Tahun Akademik 2025/2026</p>
+                            <div class="flex items-center gap-4 text-xs text-white/70">
+                                <span class="flex items-center gap-1"><ion-icon name="time-outline"></ion-icon> 01 Agu 2025 - 16 Sep 2025</span>
+                                <span class="flex items-center gap-1"><ion-icon name="people-outline"></ion-icon> <span id="totalPeserta">8</span> Peserta</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter & Search -->
+                <div class="bg-white rounded-xl p-4 border border-gray-100 shadow-sm mb-6">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1">
+                            <div class="relative">
+                                <ion-icon name="search-outline" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></ion-icon>
+                                <input type="text" id="searchPeserta" placeholder="Cari nama atau NIM mahasiswa..." class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-simawa-500/20 focus:border-simawa-500">
+                            </div>
+                        </div>
+                        <select id="filterFakultas" class="px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-simawa-500/20 focus:border-simawa-500 bg-white">
+                            <option value="">Semua Fakultas</option>
+                            <option value="Fakultas Teknik">Fakultas Teknik</option>
+                            <option value="Fakultas Ekonomi">Fakultas Ekonomi</option>
+                            <option value="Fakultas Hukum">Fakultas Hukum</option>
+                            <option value="Fakultas Agama Islam">Fakultas Agama Islam</option>
+                            <option value="Fakultas Farmasi">Fakultas Farmasi</option>
+                        </select>
+                        <select id="filterPresensi" class="px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-simawa-500/20 focus:border-simawa-500 bg-white">
+                            <option value="">Semua Status Presensi</option>
+                            <option value="Hadir">Hadir</option>
+                            <option value="Belum Hadir">Belum Hadir</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="bg-white rounded-md shadow-sm border border-gray-100">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gradient-to-r from-simawa-800 to-simawa-900 text-white">
+                                <tr>
+                                    <th class="text-left px-4 py-4 text-xs font-semibold uppercase tracking-wider">No</th>
+                                    <th class="text-left px-4 py-4 text-xs font-semibold uppercase tracking-wider">Nama Mahasiswa</th>
+                                    <th class="text-left px-4 py-4 text-xs font-semibold uppercase tracking-wider">NIM</th>
+                                    <th class="text-left px-4 py-4 text-xs font-semibold uppercase tracking-wider">Fakultas</th>
+                                    <th class="text-left px-4 py-4 text-xs font-semibold uppercase tracking-wider">Prodi</th>
+                                    <th class="text-center px-4 py-4 text-xs font-semibold uppercase tracking-wider">Status Presensi</th>
+                                    <th class="text-left px-4 py-4 text-xs font-semibold uppercase tracking-wider">Waktu Presensi</th>
+                                    <th class="text-center px-4 py-4 text-xs font-semibold uppercase tracking-wider">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablePeserta" class="divide-y divide-gray-100">
+                                <!-- Data akan di-render oleh JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Pagination -->
+                    <div class="flex items-center justify-between px-6 py-4 border-t border-gray-100">
+                        <p class="text-sm text-gray-500">Menampilkan <span class="font-medium" id="showingFrom">1</span>-<span class="font-medium" id="showingTo">8</span> dari <span class="font-medium" id="totalData">8</span> data</p>
+                        <div class="flex items-center gap-2">
+                            <button class="px-3 py-1.5 border border-gray-200 rounded-lg text-sm text-gray-500 hover:bg-gray-50 disabled:opacity-50" disabled>
+                                <ion-icon name="chevron-back-outline"></ion-icon>
+                            </button>
+                            <button class="px-3 py-1.5 bg-simawa-500 text-white rounded-lg text-sm font-medium">1</button>
+                            <button class="px-3 py-1.5 border border-gray-200 rounded-lg text-sm text-gray-500 hover:bg-gray-50 disabled:opacity-50" disabled>
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Detail Mahasiswa -->
+                <div id="modalDetail" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center">
+                    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 transform transition-all">
+                        <div class="flex items-center justify-between p-4 border-b border-gray-100">
+                            <h3 class="text-lg font-bold text-gray-800">Detail Peserta</h3>
+                            <button onclick="closeModalDetail()" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                                <ion-icon name="close-outline" class="text-xl text-gray-500"></ion-icon>
+                            </button>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-simawa-400 to-simawa-600 flex items-center justify-center text-white text-2xl font-bold" id="detailAvatar">AR</div>
+                                <div>
+                                    <h4 id="detailNama" class="text-lg font-bold text-gray-800">Ahmad Rizki</h4>
+                                    <p id="detailNim" class="text-sm text-gray-500">2021010001</p>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-xl">
+                                    <ion-icon name="school-outline" class="text-simawa-500 text-xl mt-0.5"></ion-icon>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Fakultas</p>
+                                        <p id="detailFakultas" class="text-sm font-medium text-gray-800">Fakultas Teknik</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-xl">
+                                    <ion-icon name="book-outline" class="text-simawa-500 text-xl mt-0.5"></ion-icon>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Program Studi</p>
+                                        <p id="detailProdi" class="text-sm font-medium text-gray-800">Teknik Informatika</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-xl">
+                                    <ion-icon name="checkmark-circle-outline" class="text-simawa-500 text-xl mt-0.5"></ion-icon>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Status Presensi</p>
+                                        <p id="detailStatus" class="text-sm font-medium text-emerald-600">Hadir</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-xl">
+                                    <ion-icon name="time-outline" class="text-simawa-500 text-xl mt-0.5"></ion-icon>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Waktu Presensi</p>
+                                        <p id="detailWaktu" class="text-sm font-medium text-gray-800">01 Agu 2025, 08:15</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <button onclick="closeModalDetail()" class="w-full px-4 py-2.5 bg-gray-100 text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-200 transition-colors">Tutup</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Data Peserta Kegiatan
+        const pesertaData = [
+            {
+                id: 1,
+                nama: 'Ahmad Rizki',
+                nim: '2021010001',
+                fakultas: 'Fakultas Teknik',
+                prodi: 'Teknik Informatika',
+                status: 'Hadir',
+                waktu: '01 Agu 2025, 08:15'
+            },
+            {
+                id: 2,
+                nama: 'Siti Nurhaliza',
+                nim: '2021020002',
+                fakultas: 'Fakultas Ekonomi',
+                prodi: 'Manajemen',
+                status: 'Hadir',
+                waktu: '01 Agu 2025, 08:22'
+            },
+            {
+                id: 3,
+                nama: 'Budi Santoso',
+                nim: '2021010003',
+                fakultas: 'Fakultas Teknik',
+                prodi: 'Teknik Mesin',
+                status: 'Hadir',
+                waktu: '01 Agu 2025, 08:30'
+            },
+            {
+                id: 4,
+                nama: 'Dewi Lestari',
+                nim: '2021030004',
+                fakultas: 'Fakultas Hukum',
+                prodi: 'Ilmu Hukum',
+                status: 'Belum Hadir',
+                waktu: '-'
+            },
+            {
+                id: 5,
+                nama: 'Rudi Hermawan',
+                nim: '2021040005',
+                fakultas: 'Fakultas Agama Islam',
+                prodi: 'Pendidikan Agama Islam',
+                status: 'Hadir',
+                waktu: '01 Agu 2025, 08:45'
+            },
+            {
+                id: 6,
+                nama: 'Nina Safitri',
+                nim: '2021050006',
+                fakultas: 'Fakultas Farmasi',
+                prodi: 'Farmasi',
+                status: 'Belum Hadir',
+                waktu: '-'
+            },
+            {
+                id: 7,
+                nama: 'Eko Prasetyo',
+                nim: '2021010007',
+                fakultas: 'Fakultas Teknik',
+                prodi: 'Teknik Informatika',
+                status: 'Hadir',
+                waktu: '01 Agu 2025, 09:00'
+            },
+            {
+                id: 8,
+                nama: 'Fitriani Amalia',
+                nim: '2021020008',
+                fakultas: 'Fakultas Ekonomi',
+                prodi: 'Akuntansi',
+                status: 'Hadir',
+                waktu: '01 Agu 2025, 09:05'
+            }
+        ];
+
+        // Render table
+        function renderPeserta(data) {
+            const tbody = document.getElementById('tablePeserta');
+            tbody.innerHTML = data.map((p, i) => `
+                <tr class="hover:bg-gray-50/50 transition-colors">
+                    <td class="px-4 py-4 text-sm text-gray-600">${i + 1}</td>
+                    <td class="px-4 py-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-simawa-400 to-simawa-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                                ${getInitials(p.nama)}
+                            </div>
+                            <span class="text-sm font-medium text-gray-800">${p.nama}</span>
+                        </div>
+                    </td>
+                    <td class="px-4 py-4 text-sm text-gray-600 font-mono">${p.nim}</td>
+                    <td class="px-4 py-4 text-sm text-gray-600">${p.fakultas}</td>
+                    <td class="px-4 py-4 text-sm text-gray-600">${p.prodi}</td>
+                    <td class="px-4 py-4 text-center">
+                        <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium ${p.status === 'Hadir' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">
+                            ${p.status}
+                        </span>
+                    </td>
+                    <td class="px-4 py-4 text-sm text-gray-600 whitespace-nowrap">${p.waktu}</td>
+                    <td class="px-4 py-4 text-center">
+                        <button onclick="openModalDetail(${p.id})" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-simawa-50 text-simawa-600 rounded-lg text-xs font-medium hover:bg-simawa-100 transition-colors">
+                            <ion-icon name="eye-outline" class="text-sm"></ion-icon>
+                            Detail
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+
+            // Update pagination info
+            document.getElementById('showingFrom').textContent = data.length > 0 ? '1' : '0';
+            document.getElementById('showingTo').textContent = data.length;
+            document.getElementById('totalData').textContent = data.length;
+        }
+
+        // Get initials from name
+        function getInitials(name) {
+            return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+        }
+
+        // Modal Detail
+        function openModalDetail(id) {
+            const peserta = pesertaData.find(p => p.id === id);
+            if (peserta) {
+                document.getElementById('detailAvatar').textContent = getInitials(peserta.nama);
+                document.getElementById('detailNama').textContent = peserta.nama;
+                document.getElementById('detailNim').textContent = peserta.nim;
+                document.getElementById('detailFakultas').textContent = peserta.fakultas;
+                document.getElementById('detailProdi').textContent = peserta.prodi;
+                
+                const statusEl = document.getElementById('detailStatus');
+                statusEl.textContent = peserta.status;
+                statusEl.className = `text-sm font-medium ${peserta.status === 'Hadir' ? 'text-emerald-600' : 'text-amber-600'}`;
+                
+                document.getElementById('detailWaktu').textContent = peserta.waktu;
+                
+                document.getElementById('modalDetail').classList.remove('hidden');
+                document.getElementById('modalDetail').classList.add('flex');
+            }
+        }
+
+        function closeModalDetail() {
+            document.getElementById('modalDetail').classList.add('hidden');
+            document.getElementById('modalDetail').classList.remove('flex');
+        }
+
+        // Close modal on backdrop click
+        document.getElementById('modalDetail').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModalDetail();
+            }
+        });
+
+        // Search & Filter
+        document.getElementById('searchPeserta').addEventListener('input', filterData);
+        document.getElementById('filterFakultas').addEventListener('change', filterData);
+        document.getElementById('filterPresensi').addEventListener('change', filterData);
+
+        function filterData() {
+            const search = document.getElementById('searchPeserta').value.toLowerCase();
+            const fakultas = document.getElementById('filterFakultas').value;
+            const presensi = document.getElementById('filterPresensi').value;
+            
+            let filtered = pesertaData.filter(p => {
+                const matchSearch = p.nama.toLowerCase().includes(search) || p.nim.includes(search);
+                const matchFakultas = !fakultas || p.fakultas === fakultas;
+                const matchPresensi = !presensi || p.status === presensi;
+                return matchSearch && matchFakultas && matchPresensi;
+            });
+            renderPeserta(filtered);
+        }
+
+        // Notification
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `fixed bottom-4 right-4 px-6 py-3 rounded-xl shadow-lg text-white text-sm font-medium flex items-center gap-2 z-50 ${type === 'success' ? 'bg-emerald-500' : 'bg-red-500'}`;
+            notification.innerHTML = `<ion-icon name="${type === 'success' ? 'checkmark-circle' : 'alert-circle'}" class="text-lg"></ion-icon>${message}`;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Initial render
+        renderPeserta(pesertaData);
+    </script>
+</body>
+</html>
